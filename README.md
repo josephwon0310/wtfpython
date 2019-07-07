@@ -1,22 +1,21 @@
 <p align="center"><img src="images/logo.png" alt=""></p>
 <h1 align="center">What the f*ck Python! 🐍</h1>
-<p align="center">An interesting collection of surprising snippets and lesser-known Python features.</p>
+<p align="center">놀라운 파이썬 코드 예제들과 생소한 기능들.</p>
 
 [![WTFPL 2.0][license-image]][license-url]
 
 Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn)
 
-Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
+파이썬은 아름답게 디자인된 고급(high-level) 인터프리터 기반 언어로, 개발자의 편의를 생각한 기능들이 아주 많습니다. 다만 이런 파이썬의 생소한 기능들에 익숙하지 않은 사람들에게 "파이써닉"하게 쓰여진 코드가 어떤 일을 하는지 한 눈에 알아차리기란 쉽지 않습니다.
 
-Here is a fun project to collect such tricky & counter-intuitive examples and lesser-known features in Python, attempting to discuss what exactly is happening under the hood!
+이 문서는 이러한 특유의 파이써닉한 코드들의 이해를 돕고, 파이썬이 주어진 코드를 어떻게 처리하는지 정확히 알고자는 목적으로 파이썬의 생소한 기능들 및 코드 예제를 정리한 문성입니다.
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I believe that you'll find it interesting too!
+몇몇 예제는 WTF까지는 아닐지라도, 어느면에서는 파이썬의 모르고 있었던 부분에 대한 설명이되지 않을까 싶습니다. 이러한 예제들이 프로그래밍 언어가 어떻게 작동하는지에대해 이해를 돕고, 좋은 학습 방법이될거라고 생각합니다.
 
-If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile:
+만약 본인이 파이썬 배경지식이 충분한 파이써니스타라면, 아래 예제들을 몇개나 한 번에 맞출수 있는지 도전해보세요. 이미 알고있는 예제들이 있다면 처음 그 파이썬스러움을 담은 문법을 접했을 그때 그 시절의 기억을 되살려줄수 있지않을까요? :sweat_smile:
 
-PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
 
-So, here we go...
+PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](https://github.com/satwikkansal/wtfpython/releases/)서 확인하실수 있습니다.
 
 # Table of Contents
 
