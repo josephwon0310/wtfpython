@@ -12,7 +12,7 @@
 
 파이썬은 아름답게 디자인된 고급(high-level) 인터프리터 기반 언어로, 개발자의 편의를 생각한 기능들이 아주 많습니다. 다만 이런 파이썬의 생소한 기능들에 익숙하지 않은 사람들에게 "파이써닉"하게 쓰여진 코드가 어떤 일을 하는지 한 눈에 알아차리기란 쉽지 않습니다.
 
-이 문서는 이러한 특유의 파이써닉한 코드들의 이해를 돕고, 파이썬이 주어진 코드를 어떻게 처리하는지 정확히 알고자는 목적으로 파이썬의 생소한 기능들 및 코드 예제를 정리한 문성입니다.
+이 문서는 이러한 특유의 파이써닉한 코드들의 이해를 돕고, 파이썬이 주어진 코드를 어떻게 처리하는지 정확히 알고자는 목적으로 파이썬의 생소한 기능들 및 코드 예제를 정리한 문서입니다.
 
 몇몇 예제는 WTF까지는 아닐지라도, 어느면에서는 파이썬의 모르고 있었던 부분에 대한 설명이되지 않을까 싶습니다. 이러한 예제들이 프로그래밍 언어가 어떻게 작동하는지에대해 이해를 돕고, 좋은 학습 방법이될거라고 생각합니다.
 
@@ -185,7 +185,7 @@ False
 
 3\.
 
-**Output (< Python3.7 )**
+**결과 (< 파이썬 3.7 )**
 
 ```py
 >>> 'a' * 20 is 'aaaaaaaaaaaaaaaaaaaa'
@@ -194,18 +194,18 @@ True
 False
 ```
 
-Makes sense, right?
+이해 되셨나요?
 
-#### 💡 Explanation:
-+ Such behavior is due to CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
-+ After being interned, many variables may point to the same string object in memory (thereby saving memory).
-+ In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation dependent. There are some facts that can be used to guess if a string will be interned or not:
-  * All length 0 and length 1 strings are interned.
-  * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
-  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. Cpython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
+#### 💡 설명:
++ 이러한 결과는 CPython의 불변객체를 재활용하려는 최적화 방식때문인데(string interning이라고 함), 경우에따라 새로운 객체를 만들기보다는, 이미 만들어진 객체를 재활용하기에 나타나는 결과입니다.
++ 이러한 과정을 통해 다른 변수들이 사실 메모리 내에서는 같은 문자열을 가리키게 됩니다(즉, 메모리를 절약).
++ 주어진 예제에서는 문자열이 모두 암시적으로 최적화 과정을 겪었는데, 이는 구현 방식별로 결과가 다를 수 있습니다. 아래 주어진 사실에 기반해 문자열이 위의 최적화 과정을 겪을 것인지에 대해 짐작할 수 있습니다:
+  * 길이가 0 혹은 1인 모든 문자열은 위의 최적화 과정을 겪습니다.
+  * 모든 문자열은 컴파일 타임에 최적화됩니다.  (`'wtf'` 은 최적화 과정을 거치나 `''.join(['w', 't', 'f']` 은 거치지 않는다.)
+  * ASCII로 이루어지지 않은 문자열, 숫자와 언더스코어는 이 과정을 겪지 않습니다. 위 예제에서 `'wtf!'`이 서로 다른 두 객체를 생성한 것은 바로 `!`때문 입니다. 이에 대한 Cpython의 세부적인 구현 사항은 [이 곳](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)에서 확인하실 수 있습니다.
   <img src="images/string-intern/string_intern.png" alt="">
-+ Constant folding is a technique for [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) in Python. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to reduce few clock cycles during runtime. Constant folding only occurs for strings having length less than 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
-+ Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the third snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549).
++ 상수 폴딩은 [핍홀 최적화](https://en.wikipedia.org/wiki/Peephole_optimization)를 위해 파이썬이 사용하는 기법이며, 예제에서 `'a'*20`는 컴파일시 `'aaaaaaaaaaaaaaaaaaaa'`로 치환됩니다(이는 런타임에서 클럭수를 줄이는데 도움). 그렇다면 왜 `'a'*21`은 상수 폴딩을 거치지 않았냐구요? 상수폴딩은 길이가 20이하인 문자열에 한헤 거치는 과정이기 때문입니다. (이유가 궁금하다면  `'a'*10**10`로 생성된 `.pyc` 파일의 크기를 상상해보세요). 이에 대한 구현은 [이 곳](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288)에서 확인하실 수 있습니다.
++ Note: 상수 폴딩은 파이썬 3.7을 기준으로 파이썬의 최적화 로직에서 제외되었으며 이후 버전의 파이썬은 추상구문트리를 사용합니다. 이에 대한 변경 내용이 궁금하다면 [이 곳](https://bugs.python.org/issue11549)에서 확인하실 수 있습니다.
 
 ---
 
