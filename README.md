@@ -21,13 +21,13 @@
 
 PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](https://github.com/satwikkansal/wtfpython/releases/)서 확인하실수 있습니다.
 
-# Table of Contents
+# 목차
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Structure of the Examples](#structure-of-the-examples)
+- [Structure-of-the-examples](#structure-of-the-examples)
 - [Usage](#usage)
 - [👀 Examples](#-examples)
   - [Section: Strain your brain!](#section-strain-your-brain)
@@ -95,63 +95,63 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Structure of the Examples
+# 메타 예제
 
-All the examples are structured like below:
+모든 예제는 아래와 같이 주어집니다:
 
-> ### ▶ Some fancy Title *
-> The asterisk at the end of the title indicates the example was not present in the first release and has been recently added.
+> ### ▶ 엄청난 제목 *
+> 제목 끝의 별표(\*)는 첫 버전에는 없던, 새로 추가된 예제입니다.
 >
 > ```py
-> # Setting up the code.
-> # Preparation for the magic...
+> # 코드 예제를 위한 준비
+> # 파이썬의 놀라움을 기대하세요...
 > ```
 >
-> **Output (Python version(s)):**
+> **결과 (유효한 파이썬 버전):**
 > ```py
-> >>> triggering_statement
-> Some unexpected output
+> >>> 어느 입력1
+> 신기한 결과
 > ```
-> (Optional): One line describing the unexpected output.
+> (Optional): `신기한 결과`에 대한 한줄 설명.
 >
 >
-> #### 💡 Explanation:
+> #### 💡 설명:
 >
-> * Brief explanation of what's happening and why is it happening.
+> * 코드의 결과에 관한 간단한 설명 및 이에 대한 이유.
 >   ```py
->   Setting up examples for clarification (if necessary)
+>   설명을 도울 예제
 >   ```
 >   **Output Output (Python version(s)):**
 >   ```py
->   >>> trigger # some example that makes it easy to unveil the magic
->   # some justified output
+>   >>> 어느 입력2 # 이 입력은 파이썬스러움의 이해를 도울 예제이면 좋습니다.
+>   신기하지만 이해 가능한 결과
 >   ```
 
-**Note:** All the examples are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified in the description.
+**Note:** 모든 예제는 파이썬 3.5.2 버전에서 테스트되었으며, 특정 버전이 주어진 예제가 아닌 이상 모든 파이썬 버전에서 동일하게 작동합니다.
 
-# Usage
+# 사용 방법
 
-A nice way to get the most out of these examples, in my opinion, will be to just read them chronologically, and for every example:
-- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's going to happen next.
-- Read the output snippets and,
-  + Check if the outputs are the same as you'd expect.
-  + Make sure if you know the exact reason behind the output being the way it is.
-    - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
-    - If yes, give a gentle pat on your back, and you may skip to the next example.
+이 문서는 순서대로 읽어내려가며, 각 예제 별로 다음 아래 리스트대로 시도해보기를 권장합니다:
+- 각 예제 코드의 첫 셋팅 부분을 잘 읽어주세요. 만약 파이썬 배경지식이 충분한 개발자라면 어떤 결과가 나올지에 대한 대부분의 짐작이 갈겁니다.
+- 결과 코드를 읽고,
+  + 짐작한 결과와 맞는지 확인해보세요.
+  + 주어진 예제 코드가 어째서 그러한 결과를 낳는지 정확한 이유를 아셨나요?.
+    - 만약 아니라면 (걱정하지마세요), 숨 한번 크게 쉬시고, 설명을 읽어보세요 (그래도 어렵다면 주저하지마시고 [여기](https://github.com/satwikkansal/wtfPython)에 이슈를 작성해주시면 됩니다!).
+    - 만약 이미 알던 사실이라면 기뻐하셔도 좋습니다! 다음 예제로 넘어가세요.
 
-PS: You can also read WTFPython at the command line. There's a pypi package and an npm package (which supports colored formatting) for the same.
+PS: WTFPython은 커맨드라인으로 읽을 수도 있습니다. Pypi 패키지와 npm패키지가 있으며 두 버전 모두 동일합니다.
 
-To install the npm package [`wtfpython`](https://www.npmjs.com/package/wtfpython)
+npm 패키지 설치: [`wtfpython`](https://www.npmjs.com/package/wtfpython)
 ```sh
 $ npm install -g wtfpython
 ```
 
-Alternatively, to install the pypi package [`wtfpython`](https://pypi.python.org/pypi/wtfpython)
+파이썬 패키지 설치: [`wtfpython`](https://pypi.python.org/pypi/wtfpython)
 ```sh
 $ pip install wtfpython -U
 ```
 
-Now, just run `wtfpython` at the command line which will open this collection in your selected `$PAGER`.
+설치가 끝났다면, 터미널에 `wtfpython` 입력하면 선택된 `$PAGER`에 이 문서를 열 수 .
 
 ---
 
