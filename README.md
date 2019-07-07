@@ -29,8 +29,8 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
 - [메타 예제](#메타-예제)
 - [사용 방법](#사용-방법)
 - [👀 예제](#-예제)
-  - [Section: Strain your brain!](#section-strain-your-brain)
-    - [▶ Strings can be tricky sometimes/알쏭달쏭 문자열 *](#-strings-can-be-tricky-sometimes알쏭달쏭-문자열-)
+  - [섹션: 머리가 아플 수도 있어요!](#섹션-머리가-아플-수도-있어요)
+    - [▶ 알쏭달쏭 문자열 *](#-알쏭달쏭-문자열-)
     - [▶ Time for some hash brownies!](#-time-for-some-hash-brownies)
     - [▶ Return return everywhere!](#-return-return-everywhere)
     - [▶ Deep down, we're all the same. *](#-deep-down-were-all-the-same-)
@@ -157,10 +157,10 @@ $ pip install wtfpython -U
 # 👀 예제
 
 
-## Section: Strain your brain!
+## 섹션: 머리가 아플 수도 있어요!
 
-### ▶ Strings can be tricky sometimes
-<!-- Example ID: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --->
+### ▶ 알쏭달쏭 문자열 *
+
 1\.
 ```py
 >>> a = "some_string"
