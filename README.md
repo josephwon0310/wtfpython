@@ -27,8 +27,8 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Structure-of-the-examples](#structure-of-the-examples)
-- [Usage](#usage)
+- [메타 예제](#메타-예제)
+- [사용 방법](#사용-방법)
 - [👀 Examples](#-examples)
   - [Section: Strain your brain!](#section-strain-your-brain)
     - [▶ Strings can be tricky sometimes *](#-strings-can-be-tricky-sometimes-)
