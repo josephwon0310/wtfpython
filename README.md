@@ -2,9 +2,13 @@
 <h1 align="center">What the f*ck Python! 🐍</h1>
 <p align="center">놀라운 파이썬 코드 예제들과 생소한 기능들.</p>
 
-[![WTFPL 2.0][license-image]][license-url]
+<p align="center">
+<a href="https://github.com/satwikkansal/wtfpython">English</a>
+| <a href="https://github.com/leisurelicht/wtfpython-cn">中文</a>
+  | <a href="#">한글</a>
+</p>
 
-Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn)
+[![WTFPL 2.0][license-image]][license-url]
 
 파이썬은 아름답게 디자인된 고급(high-level) 인터프리터 기반 언어로, 개발자의 편의를 생각한 기능들이 아주 많습니다. 다만 이런 파이썬의 생소한 기능들에 익숙하지 않은 사람들에게 "파이써닉"하게 쓰여진 코드가 어떤 일을 하는지 한 눈에 알아차리기란 쉽지 않습니다.
 
