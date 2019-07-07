@@ -31,7 +31,7 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
 - [사용 방법](#사용-방법)
 - [👀 예제](#-예제)
   - [Section: Strain your brain!](#section-strain-your-brain)
-    - [▶ Strings can be tricky sometimes *](#-strings-can-be-tricky-sometimes-)
+    - [▶ Strings can be tricky sometimes/알쏭달쏭 문자열 *](#-strings-can-be-tricky-sometimes알쏭달쏭 문자열-)
     - [▶ Time for some hash brownies!](#-time-for-some-hash-brownies)
     - [▶ Return return everywhere!](#-return-return-everywhere)
     - [▶ Deep down, we're all the same. *](#-deep-down-were-all-the-same-)
@@ -160,7 +160,7 @@ $ pip install wtfpython -U
 
 ## Section: Strain your brain!
 
-### ▶ Strings can be tricky sometimes *
+### ▶ Strings can be tricky sometimes/알쏭달쏭 문자열 *
 
 1\.
 ```py
@@ -230,19 +230,6 @@ False
 ```
 
 #### 💡 Explanation:
-<<<<<<< HEAD
-=======
-+ Such behavior is due to CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
-+ After being interned, many variables may point to the same string object in memory (thereby saving memory).
-+ In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation dependent. There are some facts that can be used to guess if a string will be interned or not:
-  * All length 0 and length 1 strings are interned.
-  * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
-  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. Cpython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
-  <img src="/images/string-intern/string_intern.png" alt="">
-+ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compiler optimization and specifically applies to the interactive environment.
-+ Constant folding is a technique for [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) in Python. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to reduce few clock cycles during runtime. Constant folding only occurs for strings having length less than or equal to 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
->>>>>>> 151d0ec93a06039cd2ba0c2afe15feb250be6f39
-
 - It might appear at first that the default seperator for split is a single space `' '`, but as per the [docs](https://docs.python.org/2.7/library/stdtypes.html#str.split),
     > If sep is not specified or is None, a different splitting algorithm is applied: runs of consecutive whitespace are regarded as a single separator, and the result will contain no empty strings at the start or end if the string has leading or trailing whitespace. Consequently, splitting an empty string or a string consisting of just whitespace with a None separator returns `[]`.
     > If sep is given, consecutive delimiters are not grouped together and are deemed to delimit empty strings (for example, `'1,,2'.split(',')` returns `['1', '', '2']`). Splitting an empty string with a specified separator returns `['']`.
