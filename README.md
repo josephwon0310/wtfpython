@@ -21,7 +21,7 @@
 
 PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](https://github.com/satwikkansal/wtfpython/releases/)서 확인하실수 있습니다.
 
-# Table of Contents
+# 목차
 
 <!-- toc -->
 
@@ -100,62 +100,63 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
 
 <!-- tocstop -->
 
-# Structure of the Examples
+# 메타 예제
 
-All the examples are structured like below:
+모든 예제는 아래와 같이 주어집니다:
 
-> ### ▶ Some fancy Title
+> ### ▶ 엄청난 제목 *
+> 제목 끝의 별표(\*)는 첫 버전에는 없던, 새로 추가된 예제입니다.
 >
 > ```py
-> # Setting up the code.
-> # Preparation for the magic...
+> # 코드 예제를 위한 준비
+> # 파이썬의 놀라움을 기대하세요...
 > ```
 >
-> **Output (Python version(s)):**
+> **결과 (유효한 파이썬 버전):**
 > ```py
-> >>> triggering_statement
-> Some unexpected output
+> >>> 어느 입력1
+> 신기한 결과
 > ```
-> (Optional): One line describing the unexpected output.
+> (Optional): `신기한 결과`에 대한 한줄 설명.
 >
 >
-> #### 💡 Explanation:
+> #### 💡 설명:
 >
-> * Brief explanation of what's happening and why is it happening.
+> * 코드의 결과에 관한 간단한 설명 및 이에 대한 이유.
 >   ```py
->   Setting up examples for clarification (if necessary)
+>   설명을 도울 예제
 >   ```
 >   **Output Output (Python version(s)):**
 >   ```py
->   >>> trigger # some example that makes it easy to unveil the magic
->   # some justified output
+>   >>> 어느 입력2 # 이 입력은 파이썬스러움의 이해를 도울 예제이면 좋습니다.
+>   신기하지만 이해 가능한 결과
 >   ```
 
-**Note:** All the examples are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified in the description.
+**Note:** 모든 예제는 파이썬 3.5.2 버전에서 테스트되었으며, 특정 버전이 주어진 예제가 아닌 이상 모든 파이썬 버전에서 동일하게 작동합니다.
 
-# Usage
+# 사용 방법
 
-A nice way to get the most out of these examples, in my opinion, will be to just read them chronologically, and for every example:
-- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's going to happen next.
-- Read the output snippets and,
-  + Check if the outputs are the same as you'd expect.
-  + Make sure if you know the exact reason behind the output being the way it is.
-    - If the answer is no (which is perfectly okay), take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
-    - If yes, give a gentle pat on your back, and you may skip to the next example.
+이 문서는 순서대로 읽어내려가며, 각 예제 별로 다음 아래 리스트대로 시도해보기를 권장합니다:
+- 각 예제 코드의 첫 셋팅 부분을 잘 읽어주세요. 만약 파이썬 배경지식이 충분한 개발자라면 어떤 결과가 나올지에 대한 대부분의 짐작이 갈겁니다.
+- 결과 코드를 읽고,
+  + 짐작한 결과와 맞는지 확인해보세요.
+  + 주어진 예제 코드가 어째서 그러한 결과를 낳는지 정확한 이유를 아셨나요?.
+    - 만약 아니라면 (걱정하지마세요), 숨 한번 크게 쉬시고, 설명을 읽어보세요 (그래도 어렵다면 주저하지마시고 [여기](https://github.com/satwikkansal/wtfPython)에 이슈를 작성해주시면 됩니다!).
+    - 만약 이미 알던 사실이라면 기뻐하셔도 좋습니다! 다음 예제로 넘어가세요.
 
-PS: You can also read WTFPython at the command line. There's a pypi package and an npm package (which supports colored formatting) for the same.
+PS: WTFPython은 커맨드라인으로 읽을 수도 있습니다. Pypi 패키지와 npm패키지가 있으며 두 버전 모두 동일합니다.
 
-To install the npm package [`wtfpython`](https://www.npmjs.com/package/wtfpython)
+npm 패키지 설치: [`wtfpython`](https://www.npmjs.com/package/wtfpython)
 ```sh
 $ npm install -g wtfpython
 ```
 
-Alternatively, to install the pypi package [`wtfpython`](https://pypi.python.org/pypi/wtfpython)
+파이썬 패키지 설치: [`wtfpython`](https://pypi.python.org/pypi/wtfpython)
 ```sh
 $ pip install wtfpython -U
 ```
 
-Now, just run `wtfpython` at the command line which will open this collection in your selected `$PAGER`.
+설치가 끝났다면, 터미널에 `wtfpython` 입력하면 선택된 `$PAGER`에 이 문서를 열 수 .
 
 ---
 
@@ -210,7 +211,7 @@ Makes sense, right?
   * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. Cpython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
   <img src="images/string-intern/string_intern.png" alt="">
 + Constant folding is a technique for [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) in Python. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to reduce few clock cycles during runtime. Constant folding only occurs for strings having length less than 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
-+ Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the third snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549). 
++ Note: In Python 3.7, Constant folding was moved out from peephole optimizer to the new AST optimizer with some change in logic as well, so the third snippet doesn't work for Python 3.7. You can read more about the change [here](https://bugs.python.org/issue11549).
 
 ---
 
@@ -403,7 +404,7 @@ def some_func():
     finally:
         return 'from_finally'
 
-def another_func(): 
+def another_func():
     for _ in range(3):
         try:
             continue
@@ -618,7 +619,7 @@ array_4 = [400, 500, 600]
 - In the first case, `array_1` is binded to the new object `[1,2,3,4,5]` and since the `in` clause is evaluated at the declaration time it still refers to the old object `[1,2,3,4]` (which is not destroyed).
 - In the second case, the slice assignment to `array_2` updates the same old object `[1,2,3,4]` to `[1,2,3,4,5]`. Hence both the `g2` and `array_2` still have reference to the same object (which has now been updated to `[1,2,3,4,5]`).
 - Okay, going by the logic discussed so far, shouldn't be the value of `list(g)` in the third snippet be `[11, 21, 31, 12, 22, 32, 13, 23, 33]`? (because `array_3` and `array_4` are going to behave just like `array_1`). The reason why (only) `array_4` values got updated is explained in [PEP-289](https://www.python.org/dev/peps/pep-0289/#the-details)
-  
+
     > Only the outermost for-expression is evaluated immediately, the other expressions are deferred until the generator is run.
 
 ---
@@ -716,7 +717,7 @@ Quoting from https://docs.python.org/3/c-api/long.html
 
 Here the interpreter isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257,` and so it goes on to create another object in the memory.
 
-Similar optimization applies to other **immutable** objects like empty tuples as well. Since lists are mutable, that's why `[] is []` will return `False` and `() is ()` will return `True`. This explains our second snippet. Let's move on to the third one, 
+Similar optimization applies to other **immutable** objects like empty tuples as well. Since lists are mutable, that's why `[] is []` will return `False` and `() is ()` will return `True`. This explains our second snippet. Let's move on to the third one,
 
 **Both `a` and `b` refer to the same object when initialized with same value in the same line.**
 
@@ -1366,7 +1367,7 @@ I've lost faith in truth!
 >>> first_three, remaining
 ([0, 1, 2], [3, 4, 5, 6])
 >>> numbers_iter = iter(numbers)
->>> list(zip(numbers_iter, first_three)) 
+>>> list(zip(numbers_iter, first_three))
 [(0, 0), (1, 1), (2, 2)]
 # so far so good, let's zip the remaining
 >>> list(zip(numbers_iter, remaining))
@@ -1390,7 +1391,7 @@ Where did element `3` go from the `numbers` list?
                 result.append(elem)
             yield tuple(result)
     ```
-- So the function takes in arbitrary number of itreable objects, adds each of their items to the `result` list by calling the `next` function on them, and stops whenever any of the iterable is exhausted. 
+- So the function takes in arbitrary number of itreable objects, adds each of their items to the `result` list by calling the `next` function on them, and stops whenever any of the iterable is exhausted.
 - The caveat here is when any iterable is exhausted, the existing elements in the `result` list are discarded. That's what happened with `3` in the `numbers_iter`.
 - The correct way to do the above using `zip` would be,
     ```py
@@ -1532,7 +1533,7 @@ a, b = a[b] = {}, 5
   (target_list "=")+ (expression_list | yield_expression)
   ```
   and
-  
+
 > An assignment statement evaluates the expression list (remember that this can be a single expression or a comma-separated list, the latter yielding a tuple) and assigns the single resulting object to each of the target lists, from left to right.
 
 * The `+` in `(target_list "=")+` means there can be **one or more** target lists. In this case, target lists are `a, b` and `a[b]` (note the expression list is exactly one, which in our case is `{}, 5`).
@@ -1668,7 +1669,7 @@ Shouldn't that be 100?
 
 * **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
 * This is how Python handles tabs:
-  
+
   > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
 * So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
 * Python 3 is kind enough to throw an error for such cases automatically.
@@ -2447,7 +2448,7 @@ There we go.
 #### 💡 Explanation:
 - This is relevant to [PEP-401](https://www.python.org/dev/peps/pep-0401/) released on April 1, 2009 (now you know, what it means).
 - Quoting from the PEP-401
-  
+
   > Recognized that the != inequality operator in Python 3.0 was a horrible, finger pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
 - There were more things that Uncle Barry had to share in the PEP; you can read them [here](https://www.python.org/dev/peps/pep-0401/).
 - It works well on interactive environment, but it will raise a `SyntaxError` when you run via python file (see this [issue](https://github.com/satwikkansal/wtfpython/issues/94)). However, you can wrap the statement inside an `eval` or `compile` to get it working,
