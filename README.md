@@ -205,8 +205,8 @@ False
   * 모든 문자열은 컴파일 타임에 최적화됩니다.  (`'wtf'` 은 최적화 과정을 거치나 `''.join(['w', 't', 'f']` 은 거치지 않는다.)
   * ASCII로 이루어지지 않은 문자열, 숫자와 언더스코어는 이 과정을 겪지 않습니다. 위 예제에서 `'wtf!'`이 서로 다른 두 객체를 생성한 것은 바로 `!`때문 입니다. 이에 대한 Cpython의 세부적인 구현 사항은 [이 곳](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)에서 확인하실 수 있습니다.
   <img src="images/string-intern/string_intern.png" alt="">
-+ 상수 폴딩은 [핍홀 최적화](https://en.wikipedia.org/wiki/Peephole_optimization)를 위해 파이썬이 사용하는 기법이며, 예제에서 `'a'*20`는 컴파일시 `'aaaaaaaaaaaaaaaaaaaa'`로 치환됩니다(이는 런타임에서 클럭수를 줄이는데 도움). 그렇다면 왜 `'a'*21`은 상수 폴딩을 거치지 않았냐구요? 상수폴딩은 길이가 20이하인 문자열에 한헤 거치는 과정이기 때문입니다. (이유가 궁금하다면  `'a'*10**10`로 생성된 `.pyc` 파일의 크기를 상상해보세요). 이에 대한 구현은 [이 곳](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288)에서 확인하실 수 있습니다.
-+ Note: 상수 폴딩은 파이썬 3.7을 기준으로 파이썬의 최적화 로직에서 제외되었으며 이후 버전의 파이썬은 추상구문트리를 사용합니다. 이에 대한 변경 내용이 궁금하다면 [이 곳](https://bugs.python.org/issue11549)에서 확인하실 수 있습니다.
++ 상수 폴딩은 [핍홀 최적화](https://en.wikipedia.org/wiki/Peephole_optimization)를 위해 파이썬이 사용하는 기법이며, 예제에서 `'a'*20`는 컴파일시 `'aaaaaaaaaaaaaaaaaaaa'`로 치환됩니다(이는 런타임에서 클럭수를 줄이는데 도움). 그렇다면 왜 `'a'*21`은 상수 폴딩을 거치지 않았냐구요? 상수폴딩은 길이가 20 이하인 문자열에 한하여 거치는 과정이기 때문입니다. (이유가 궁금하다면 `'a'*10**10`로 생성된 `.pyc` 파일의 크기를 상상해보세요). 이에 대한 구현은 [이 곳](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288)에서 확인하실 수 있습니다.
++ 참고: 상수 폴딩은 파이썬 3.7을 기준으로 파이썬의 최적화 로직에서 제외되었으며 이후 버전의 파이썬은 추상 구문 트리를 사용합니다. 이에 대한 변경 내용이 궁금하다면 [이 곳](https://bugs.python.org/issue11549)에서 확인하실 수 있습니다.
 
 ---
 
