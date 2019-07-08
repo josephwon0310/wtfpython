@@ -1606,7 +1606,11 @@ The built-in `ord()` function returns a character's Unicode [code point](https:/
 
 ---
 
+<<<<<<< HEAD
 ### ▶ Teleportation
+=======
+### ▶ Teleportation *
+>>>>>>> Added all uuids
 <!-- Example ID: edafe923-0c20-4315-b6e1-0c31abfc38f5 --->
 ```py
 import numpy as np
@@ -1716,7 +1720,11 @@ Yes, it runs for exactly **eight** times and stops.
 
 ---
 
+<<<<<<< HEAD
 ### ▶ Stubborn `del` operation
+=======
+### ▶ Stubborn `del` operator *
+>>>>>>> Added all uuids
 <!-- Example ID: 777ed4fd-3a2d-466f-95e7-c4058e61d78e --->
 ```py
 class SomeClass:
@@ -2185,7 +2193,11 @@ class SomeClass:
 
 ---
 
+<<<<<<< HEAD
 ### ▶ Needles in a Haystack
+=======
+### ▶ Needles in a Haystack ^
+>>>>>>> Added all uuids
 <!-- Example ID: 52a199b1-989a-4b28-8910-dff562cebba9 --->
 1\.
 ```py
@@ -2353,7 +2365,7 @@ NameError: name 'some_weird_name_func_' is not defined
 아래 섹션은 처음 접하는 사람들에게는 생소할 수도 있는 파이썬의 기능들을 소개합니다.
 
 ### ▶ 파이썬과 함께 나는 방법? *
-
+<!-- Example ID: a92f3645-1899-4d50-9721-0031be4aec3f --->
 방법이 궁금하세요? 아래 예제를 확인하세요!
 
 ```py
@@ -2371,7 +2383,11 @@ import antigravity
 
 ---
 
+<<<<<<< HEAD
 ### ▶ `goto`, but why?
+=======
+### ▶ `goto`, but why? *
+>>>>>>> Added all uuids
 <!-- Example ID: 2aff961e-7fa5-4986-a18a-9e5894bd89fe --->
 ```py
 from goto import goto, label
@@ -2399,7 +2415,11 @@ Freedom!
 
 ---
 
+<<<<<<< HEAD
 ### ▶ Brace yourself!
+=======
+### ▶ Brace yourself! *
+>>>>>>> Added all uuids
 <!-- Example ID: 5c0c75f2-ddd9-4da3-ba49-c4be7ec39acf --->
 If you are one of the people who doesn't like using whitespace in Python to denote scopes, you can use the C-style {} by importing,
 
@@ -2424,7 +2444,11 @@ Braces? No way! If you think that's disappointing, use Java. Okay, another surpr
 
 ---
 
+<<<<<<< HEAD
 ### ▶ Let's meet Friendly Language Uncle For Life
+=======
+### ▶ Let's meet Friendly Language Uncle For Life ^
+>>>>>>> Added all uuids
 <!-- Example ID: 6427fae6-e959-462d-85da-ce4c94ce41be --->
 **Output (Python 3.x)**
 ```py
@@ -2455,7 +2479,11 @@ There we go.
 
 ---
 
+<<<<<<< HEAD
 ### ▶ Even Python understands that love is complicated
+=======
+### ▶ Even Python understands that love is complicated *
+>>>>>>> Added all uuids
 <!-- Example ID: b93cad9e-d341-45d1-999c-fcdce65bed25 --->
 ```py
 import this
