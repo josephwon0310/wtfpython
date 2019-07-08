@@ -75,7 +75,7 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
     - [▶ Needle in a Haystack](#-needle-in-a-haystack)
   - [섹션: 파이썬의 숨겨진 보물들!](#섹션-파이썬의-숨겨진-보물들)
     - [▶ 파이썬과 함께 나는 방법? *](#-파이썬과-함께-나는-방법)
-    - [▶ `goto`, but why? *](#-goto-but-why-)
+    - [▶ 파이썬에 `goto`문이 있다고? *](#-파이썬에-goto문이-있다고-)
     - [▶ Brace yourself! *](#-brace-yourself-)
     - [▶ Let's meet Friendly Language Uncle For Life *](#-lets-meet-friendly-language-uncle-for-life-)
     - [▶ Even Python understands that love is complicated *](#-even-python-understands-that-love-is-complicated-)
@@ -2376,7 +2376,7 @@ import antigravity
 
 ---
 
-### ▶ `goto`, but why? *
+### ▶ 파이썬에 `goto`문이 있다고? *
 <!-- Example ID: 2aff961e-7fa5-4986-a18a-9e5894bd89fe --->
 ```py
 from goto import goto, label
@@ -2390,17 +2390,17 @@ label .breakout
 print("Freedom!")
 ```
 
-**Output (Python 2.3):**
+**결과 (파이썬 2.3):**
 ```py
 I'm trapped, please rescue!
 I'm trapped, please rescue!
 Freedom!
 ```
 
-#### 💡 Explanation:
-- A working version of `goto` in Python was [announced](https://mail.python.org/pipermail/python-announce-list/2004-April/002982.html) as an April Fool's joke on 1st April 2004.
-- Current versions of Python do not have this module.
-- Although it works, but please don't use it. Here's the [reason](https://docs.python.org/3/faq/design.html#why-is-there-no-goto) to why `goto` is not present in Python.
+#### 💡 설명:
+- 파이썬의 `goto`문은 2004년 4월 1일 만우절 기념으로 [발표](https://mail.python.org/pipermail/python-announce-list/2004-April/002982.html)되었습니다.
+- 이후 발표된 최근 버전들은 이 모듈이 없습니다.
+- 사용할 수 있다고해서 사용하지는 말아주세요! 파이썬에 왜 `goto`문이 없는가에 대한 이유가 궁금하시면 이 [링크](https://docs.python.org/3/faq/design.html#why-is-there-no-goto)를 확인해주세요.
 
 ---
 
