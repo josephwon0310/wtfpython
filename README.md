@@ -73,8 +73,8 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
     - [▶ Be careful with chained operations](#-be-careful-with-chained-operations)
     - [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
     - [▶ Needle in a Haystack](#-needle-in-a-haystack)
-  - [Section: The Hidden treasures!](#section-the-hidden-treasures)
-    - [▶ Okay Python, Can you make me fly? *](#-okay-python-can-you-make-me-fly-)
+  - [섹션: 파이썬의 숨겨진 보물들!](#섹션-파이썬의-숨겨진-보물들)
+    - [▶ 파이썬과 함께 나는 방법? *](#-파이썬과-함께-나는-방법)
     - [▶ `goto`, but why? *](#-goto-but-why-)
     - [▶ Brace yourself! *](#-brace-yourself-)
     - [▶ Let's meet Friendly Language Uncle For Life *](#-lets-meet-friendly-language-uncle-for-life-)
@@ -2353,25 +2353,26 @@ NameError: name 'some_weird_name_func_' is not defined
 ---
 
 
-## Section: The Hidden treasures!
+## 섹션: 파이썬의 숨겨진 보물들!
 
-This section contains few of the lesser-known interesting things about Python that most beginners like me are unaware of (well, not anymore).
+아래 섹션은 처음 접하는 사람들에게는 생소할 수도 있는 파이썬의 기능들을 소개합니다.
 
-### ▶ Okay Python, Can you make me fly? *
+### ▶ 파이썬과 함께 나는 방법? *
 
-Well, here you go
+방법이 궁금하세요? 아래 예제를 확인하세요!
 
 ```py
 import antigravity
 ```
 
-**Output:**
-Sshh.. It's a super secret.
+**결과:**
+쉿..! 일급 기밀이에요.
 
-#### 💡 Explanation:
-+ `antigravity` module is one of the few easter eggs released by Python developers.
-+ `import antigravity` opens up a web browser pointing to the [classic XKCD comic](http://xkcd.com/353/) about Python.
-+ Well, there's more to it. There's **another easter egg inside the easter egg**. If you look at the [code](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17), there's a function defined that purports to implement the [XKCD's geohashing algorithm](https://xkcd.com/426/).
+#### 💡 설명:
++ `antigravity` 모듈은 파이썬이 가진 몇 안되는 이스터에그중 하나입니다.
++ `import antigravity`는 파이썬에 관한 [XKCD](http://xkcd.com/353/)만화가 담긴 웹페이지를 엽니다(XKCD는 미국의 유명한 이공계열 만화).
++ 이게 전부가 아닙니다! **이 이스터에그 안에는 사실 이스터에그가 하나 더 있습니다**. 이 [코드](https://github.com/python/cpython/blob/master/Lib/antigravity.py#L7-L17)를 확인해보면, [XKCD의 지오해싱 알고리즘](https://xkcd.com/426/)이 구현되어 있습니다(!).
++ [지오해싱](https://en.wikipedia.org/wiki/Geohashing)? 지오해싱은 xkcd 만화에서 처음 소개된 놀이로 더 잘 알려진 [지오캐싱](https://ko.wikipedia.org/wiki/%EC%A7%80%EC%98%A4%EC%BA%90%EC%8B%B1)과는 다릅니다.
 
 ---
 
