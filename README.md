@@ -1,6 +1,7 @@
 <p align="center"><img src="images/logo.png" alt=""></p>
 <h1 align="center">What the f*ck Python! 🐍</h1>
 <p align="center">놀라운 파이썬 코드 예제들과 생소한 기능들.</p>
+<p align="center">이 문서는 현재 번역이 진행 중인 미완성 문서입니다.</p>
 
 <p align="center">
 <a href="https://github.com/satwikkansal/wtfpython">English</a>
@@ -160,7 +161,7 @@ $ pip install wtfpython -U
 ## 섹션: 머리가 아플 수도 있어요!
 
 ### ▶ 알쏭달쏭 문자열 *
-
+<!-- Example ID: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --->
 1\.
 ```py
 >>> a = "some_string"
