@@ -1,34 +1,38 @@
-<p align="center"><img src="/images/logo.png" alt=""></p>
+<p align="center"><img src="images/logo.png" alt=""></p>
 <h1 align="center">What the f*ck Python! 🐍</h1>
-<p align="center">An interesting collection of surprising snippets and lesser-known Python features.</p>
+<p align="center">놀라운 파이썬 코드 예제들과 생소한 기능들.</p>
+<p align="center">이 문서는 현재 번역이 진행 중인 미완성 문서입니다.</p>
+
+<p align="center">
+<a href="https://github.com/satwikkansal/wtfpython">English</a>
+| <a href="https://github.com/leisurelicht/wtfpython-cn">中文</a>
+  | <a href="#">한글</a>
+</p>
 
 [![WTFPL 2.0][license-image]][license-url]
 
-Translations: [Chinese 中文](https://github.com/leisurelicht/wtfpython-cn)
+파이썬은 아름답게 디자인된 고급(high-level) 인터프리터 기반 언어로, 개발자의 편의를 생각한 기능들이 아주 많습니다. 다만 이런 파이썬의 생소한 기능들에 익숙하지 않은 사람들에게 "파이써닉"하게 쓰여진 코드가 어떤 일을 하는지 한 눈에 알아차리기란 쉽지 않습니다.
 
-Python, being a beautifully designed high-level and interpreter-based programming language, provides us with many features for the programmer's comfort. But sometimes, the outcomes of a Python snippet may not seem obvious to a regular user at first sight.
+이 문서는 이러한 특유의 파이써닉한 코드들의 이해를 돕고, 파이썬이 주어진 코드를 어떻게 처리하는지 정확히 알고자는 목적으로 파이썬의 생소한 기능들 및 코드 예제를 정리한 문서입니다.
 
-Here is a fun project to collect such tricky & counter-intuitive examples and lesser-known features in Python, attempting to discuss what exactly is happening under the hood!
+몇몇 예제는 WTF까지는 아닐지라도, 어느면에서는 파이썬의 모르고 있었던 부분에 대한 설명이되지 않을까 싶습니다. 이러한 예제들이 프로그래밍 언어가 어떻게 작동하는지에대해 이해를 돕고, 좋은 학습 방법이될거라고 생각합니다.
 
-While some of the examples you see below may not be WTFs in the truest sense, but they'll reveal some of the interesting parts of Python that you might be unaware of. I find it a nice way to learn the internals of a programming language, and I think you'll find them interesting as well!
+만약 본인이 파이썬 배경지식이 충분한 파이써니스타라면, 아래 예제들을 몇개나 한 번에 맞출수 있는지 도전해보세요. 이미 알고있는 예제들이 있다면 처음 그 파이썬스러움을 담은 문법을 접했을 그때 그 시절의 기억을 되살려줄수 있지않을까요? :sweat_smile:
 
-If you're an experienced Python programmer, you can take it as a challenge to get most of them right in first attempt. You may be already familiar with some of these examples, and I might be able to revive sweet old memories of yours being bitten by these gotchas :sweat_smile:
 
-PS: If you're a returning reader, you can learn about the new modifications [here](https://github.com/satwikkansal/wtfpython/releases/).
+PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](https://github.com/satwikkansal/wtfpython/releases/)서 확인하실수 있습니다.
 
-So, here we go...
-
-# Table of Contents
+# 목차
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Structure of the Examples](#structure-of-the-examples)
-- [Usage](#usage)
-- [👀 Examples](#-examples)
-  - [Section: Strain your brain!](#section-strain-your-brain)
-    - [▶ Strings can be tricky sometimes *](#-strings-can-be-tricky-sometimes-)
+- [메타 예제](#메타-예제)
+- [사용 방법](#사용-방법)
+- [👀 예제](#-예제)
+  - [섹션: 머리가 아플 수도 있어요!](#섹션-머리가-아플-수도-있어요)
+    - [▶ 알쏭달쏭 문자열 *](#-알쏭달쏭-문자열-)
     - [▶ Time for some hash brownies!](#-time-for-some-hash-brownies)
     - [▶ Return return everywhere!](#-return-return-everywhere)
     - [▶ Deep down, we're all the same. *](#-deep-down-were-all-the-same-)
@@ -92,79 +96,79 @@ So, here we go...
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-# Structure of the Examples
+# 메타 예제
 
-All the examples are structured like below:
+모든 예제는 아래와 같이 주어집니다:
 
-> ### ▶ Some fancy Title *
-> The asterisk at the end of the title indicates the example was not present in the first release and has been recently added.
+> ### ▶ 엄청난 제목 *
+> 제목 끝의 별표(\*)는 첫 버전에는 없던, 새로 추가된 예제입니다.
 >
 > ```py
-> # Setting up the code.
-> # Preparation for the magic...
+> # 코드 예제를 위한 준비
+> # 파이썬의 놀라움을 기대하세요...
 > ```
 >
-> **Output (Python version):**
+> **결과 (유효한 파이썬 버전):**
 > ```py
-> >>> triggering_statement
-> Probably unexpected output
+> >>> 어느 입력1
+> 신기한 결과
 > ```
-> (Optional): One line describing the unexpected output.
+> (Optional): `신기한 결과`에 대한 한줄 설명.
 >
 >
-> #### 💡 Explanation:
+> #### 💡 설명:
 >
-> * Brief explanation of what's happening and why is it happening.
+> * 코드의 결과에 관한 간단한 설명 및 이에 대한 이유.
 >   ```py
->   Setting up examples for clarification (if necessary)
+>   설명을 도울 예제
 >   ```
->   **Output:**
+>   **Output Output (Python version(s)):**
 >   ```py
->   >>> trigger # some example that makes it easy to unveil the magic
->   # some justified output
+>   >>> 어느 입력2 # 이 입력은 파이썬스러움의 이해를 도울 예제이면 좋습니다.
+>   신기하지만 이해 가능한 결과
 >   ```
 
-**Note:** All the examples are tested on Python 3.5.2 interactive interpreter, and they should work for all the Python versions unless explicitly specified in the description.
+**Note:** 모든 예제는 파이썬 3.5.2 버전에서 테스트되었으며, 특정 버전이 주어진 예제가 아닌 이상 모든 파이썬 버전에서 동일하게 작동합니다.
 
-# Usage
+# 사용 방법
 
-A nice way to get the most out of these examples, in my opinion, will be just to read the examples chronologically, and for every example:
-- Carefully read the initial code for setting up the example. If you're an experienced Python programmer, most of the times you will successfully anticipate what's going to happen next.
-- Read the output snippets and,
-  + Check if the outputs are the same as you'd expect.
-  + Make sure if you know the exact reason behind the output being the way it is.
-    - If no, take a deep breath, and read the explanation (and if you still don't understand, shout out! and create an issue [here](https://github.com/satwikkansal/wtfPython)).
-    - If yes, give a gentle pat on your back, and you may skip to the next example.
+이 문서는 순서대로 읽어내려가며, 각 예제 별로 다음 아래 리스트대로 시도해보기를 권장합니다:
+- 각 예제 코드의 첫 셋팅 부분을 잘 읽어주세요. 만약 파이썬 배경지식이 충분한 개발자라면 어떤 결과가 나올지에 대한 대부분의 짐작이 갈겁니다.
+- 결과 코드를 읽고,
+  + 짐작한 결과와 맞는지 확인해보세요.
+  + 주어진 예제 코드가 어째서 그러한 결과를 낳는지 정확한 이유를 아셨나요?.
+    - 만약 아니라면 (걱정하지마세요), 숨 한번 크게 쉬시고, 설명을 읽어보세요 (그래도 어렵다면 주저하지마시고 [여기](https://github.com/satwikkansal/wtfPython)에 이슈를 작성해주시면 됩니다!).
+    - 만약 이미 알던 사실이라면 기뻐하셔도 좋습니다! 다음 예제로 넘어가세요.
 
-PS: You can also read WTFpython at the command line. There's a pypi package and an npm package (supports colored formatting) for the same.
+PS: WTFPython은 커맨드라인으로 읽을 수도 있습니다. Pypi 패키지와 npm패키지가 있으며 두 버전 모두 동일합니다.
 
-To install the npm package [`wtfpython`](https://www.npmjs.com/package/wtfpython)
+npm 패키지 설치: [`wtfpython`](https://www.npmjs.com/package/wtfpython)
 ```sh
 $ npm install -g wtfpython
 ```
 
-Alternatively, to install the pypi package [`wtfpython`](https://pypi.python.org/pypi/wtfpython)
+파이썬 패키지 설치: [`wtfpython`](https://pypi.python.org/pypi/wtfpython)
 ```sh
 $ pip install wtfpython -U
 ```
 
-Now, just run `wtfpython` at the command line which will open this collection in your selected `$PAGER`.
+설치가 끝났다면, 터미널에 `wtfpython` 입력하면 이 문서를 열 수 있습니다.
 
 ---
 
-# 👀 Examples
+# 👀 예제
 
 
-## Section: Strain your brain!
+## 섹션: 머리가 아플 수도 있어요!
 
-### ▶ Strings can be tricky sometimes *
-
+### ▶ 알쏭달쏭 문자열 *
+<!-- Example ID: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --->
 1\.
 ```py
 >>> a = "some_string"
 >>> id(a)
 140420665652016
->>> id("some" + "_" + "string") # Notice that both the ids are same.
+>>> id("some" + "_" + "string") # 두 출력의 아이디가 같은 것에 주목하세요.
 140420665652016
 ```
 
@@ -179,13 +183,12 @@ True
 >>> b = "wtf!"
 >>> a is b
 False
-
->>> a, b = "wtf!", "wtf!"
->>> a is b
-True
 ```
 
 3\.
+
+**결과 (< 파이썬 3.7 )**
+
 ```py
 >>> 'a' * 20 is 'aaaaaaaaaaaaaaaaaaaa'
 True
@@ -193,24 +196,60 @@ True
 False
 ```
 
-Makes sense, right?
+이해 되셨나요?
 
-#### 💡 Explanation:
-+ Such behavior is due to CPython optimization (called string interning) that tries to use existing immutable objects in some cases rather than creating a new object every time.
-+ After being interned, many variables may point to the same string object in memory (thereby saving memory).
-+ In the snippets above, strings are implicitly interned. The decision of when to implicitly intern a string is implementation dependent. There are some facts that can be used to guess if a string will be interned or not:
-  * All length 0 and length 1 strings are interned.
-  * Strings are interned at compile time (`'wtf'` will be interned but `''.join(['w', 't', 'f']` will not be interned)
-  * Strings that are not composed of ASCII letters, digits or underscores, are not interned. This explains why `'wtf!'` was not interned due to `!`. Cpython implementation of this rule can be found [here](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)
-  <img src="/images/string-intern/string_intern.png" alt="">
-+ When `a` and `b` are set to `"wtf!"` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `wtf!` as an object (because `"wtf!"` is not implicitly interned as per the facts mentioned above). It's a compiler optimization and specifically applies to the interactive environment.
-+ Constant folding is a technique for [peephole optimization](https://en.wikipedia.org/wiki/Peephole_optimization) in Python. This means the expression `'a'*20` is replaced by `'aaaaaaaaaaaaaaaaaaaa'` during compilation to reduce few clock cycles during runtime. Constant folding only occurs for strings having length less than or equal to 20. (Why? Imagine the size of `.pyc` file generated as a result of the expression `'a'*10**10`). [Here's](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288) the implementation source for the same.
-
+#### 💡 설명:
++ 이러한 결과는 CPython의 불변객체를 재활용하려는 최적화 방식때문인데(string interning이라고 함), 경우에따라 새로운 객체를 만들기보다는, 이미 만들어진 객체를 재활용하기에 나타나는 결과입니다.
++ 이러한 과정을 통해 다른 변수들이 사실 메모리 내에서는 같은 문자열을 가리키게 됩니다(즉, 메모리를 절약).
++ 주어진 예제에서는 문자열이 모두 암시적으로 최적화 과정을 겪었는데, 이는 구현 방식별로 결과가 다를 수 있습니다. 아래 주어진 사실에 기반해 문자열이 위의 최적화 과정을 겪을 것인지에 대해 짐작할 수 있습니다:
+  * 길이가 0 혹은 1인 모든 문자열은 위의 최적화 과정을 겪습니다.
+  * 모든 문자열은 컴파일 타임에 최적화됩니다.  (`'wtf'` 은 최적화 과정을 거치나 `''.join(['w', 't', 'f']` 은 거치지 않는다.)
+  * ASCII로 이루어지지 않은 문자열, 숫자와 언더스코어는 이 과정을 겪지 않습니다. 위 예제에서 `'wtf!'`이 서로 다른 두 객체를 생성한 것은 바로 `!`때문 입니다. 이에 대한 Cpython의 세부적인 구현 사항은 [이 곳](https://github.com/python/cpython/blob/3.6/Objects/codeobject.c#L19)에서 확인하실 수 있습니다.
+  <img src="images/string-intern/string_intern.png" alt="">
++ 상수 폴딩은 [핍홀 최적화](https://en.wikipedia.org/wiki/Peephole_optimization)를 위해 파이썬이 사용하는 기법이며, 예제에서 `'a'*20`는 컴파일시 `'aaaaaaaaaaaaaaaaaaaa'`로 치환됩니다(이는 런타임에서 클럭수를 줄이는데 도움). 그렇다면 왜 `'a'*21`은 상수 폴딩을 거치지 않았냐구요? 상수폴딩은 길이가 20 이하인 문자열에 한하여 거치는 과정이기 때문입니다. (이유가 궁금하다면 `'a'*10**10`로 생성된 `.pyc` 파일의 크기를 상상해보세요). 이에 대한 구현은 [이 곳](https://github.com/python/cpython/blob/3.6/Python/peephole.c#L288)에서 확인하실 수 있습니다.
++ 참고: 상수 폴딩은 파이썬 3.7을 기준으로 파이썬의 최적화 로직에서 제외되었으며 이후 버전의 파이썬은 추상 구문 트리를 사용합니다. 이에 대한 변경 내용이 궁금하다면 [이 곳](https://bugs.python.org/issue11549)에서 확인하실 수 있습니다.
 
 ---
 
-### ▶ Time for some hash brownies!
+### ▶ Splitsies ^
+<!-- Example ID: ec3168ba-a81a-4482-afb0-691f1cc8d65a --->
+```py
+>>> 'a'.split()
+['a']
 
+# is same as
+>>> 'a'.split(' ')
+['a']
+
+# but
+>>> len(''.split())
+0
+
+# isn't the same as
+>>> len(''.split(' '))
+1
+```
+
+#### 💡 Explanation:
+- It might appear at first that the default seperator for split is a single space `' '`, but as per the [docs](https://docs.python.org/2.7/library/stdtypes.html#str.split),
+    > If sep is not specified or is None, a different splitting algorithm is applied: runs of consecutive whitespace are regarded as a single separator, and the result will contain no empty strings at the start or end if the string has leading or trailing whitespace. Consequently, splitting an empty string or a string consisting of just whitespace with a None separator returns `[]`.
+    > If sep is given, consecutive delimiters are not grouped together and are deemed to delimit empty strings (for example, `'1,,2'.split(',')` returns `['1', '', '2']`). Splitting an empty string with a specified separator returns `['']`.
+- Noticing how the leading and trailing whitespaces are handled in the following snippet will make things clear,
+    ```py
+    >>> ' a '.split(' ')
+    ['', 'a', '']
+    >>> ' a '.split()
+    ['a']
+    >>> ''.split(' ')
+    ['']
+    ```
+
+---
+
+
+
+### ▶ Time for some hash brownies!
+<!-- Example ID: eb17db53-49fd-4b61-85d6-345c5ca213ff --->
 1\.
 ```py
 some_dict = {}
@@ -225,20 +264,27 @@ some_dict[5] = "Python"
 "Ruby"
 >>> some_dict[5.0]
 "Python"
->>> some_dict[5]
+>>> some_dict[5] # "Python" destroyed the existence of "JavaScript"?
+"Python"
+
+>>> complex_five = 5 + 0j
+>>> type(complex_five)
+complex
+>>> some_dict[complex_five]
 "Python"
 ```
 
-"Python" destroyed the existence of "JavaScript"?
+So, why is Python all over the place?
+
 
 #### 💡 Explanation
 
 * Python dictionaries check for equality and compare the hash value to determine if two keys are the same.
 * Immutable objects with same value always have the same hash in Python.
   ```py
-  >>> 5 == 5.0
+  >>> 5 == 5.0 == 5 + 0j
   True
-  >>> hash(5) == hash(5.0)
+  >>> hash(5) == hash(5.0) == hash(5 + 0j)
   True
   ```
   **Note:** Objects with different values may also have same hash (known as hash collision).
@@ -247,31 +293,166 @@ some_dict[5] = "Python"
 
 ---
 
-### ▶ Return return everywhere!
+### ▶ The disorder within order ^
+<!-- Example ID: 91bff1f8-541d-455a-9de4-6cd8ff00ea66 --->
+```py
+from collections import OrderedDict
 
+dictionary = dict()
+dictionary[1] = 'a'; dictionary[2] = 'b';
+
+ordered_dict = OrderedDict()
+ordered_dict[1] = 'a'; ordered_dict[2] = 'b';
+
+another_ordered_dict = OrderedDict()
+another_ordered_dict[2] = 'b'; another_ordered_dict[1] = 'a';
+
+class DictWithHash(dict):
+    """
+    A dict that also implements __hash__ magic.
+    """
+    __hash__ = lambda self: 0
+
+class OrderedDictWithHash(OrderedDict):
+    """
+    A dict that also implements __hash__ magic.
+    """
+    __hash__ = lambda self: 0
+```
+
+**Output**
+```py
+>>> dictionary == ordered_dict # If a == b
+True
+>>> dictionary == another_ordered_dict # and b == c
+True
+>>> ordered_dict == another_ordered_dict # the why isn't c == a ??
+False
+
+# We all know that a set consists of only unique elements,
+# let's try making a set of these dictionaries and see what happens...
+
+>>> len({dictionary, ordered_dict, another_ordered_dict})
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: unhashable type: 'dict'
+
+# Makes sense since dict don't have __hash__ implemented, let's use
+# our wrapper classes.
+>>> dictionary = DictWithHash()
+>>> dictionary[1] = 'a'; dictionary[2] = 'b';
+>>> ordered_dict = OrderedDictWithHash()
+>>> ordered_dict[1] = 'a'; ordered_dict[2] = 'b';
+>>> another_ordered_dict = OrderedDictWithHash()
+>>> another_ordered_dict[2] = 'b'; another_ordered_dict[1] = 'a';
+>>> len({dictionary, ordered_dict, another_ordered_dict})
+1
+>>> len({ordered_dict, another_ordered_dict, dictionary}) # changing the order
+2
+```
+
+What is going on here?
+
+#### 💡 Explanation:
+
+- The reason why intransitive equality didn't hold among `dictionary`, `ordered_dict` and `another_ordered_dict` is because of the way `__eq__` method is implemented in `OrderedDict` class. From the [docs](https://docs.python.org/3/library/collections.html#ordereddict-objects)
+    > Equality tests between OrderedDict objects are order-sensitive and are implemented as `list(od1.items())==list(od2.items())`. Equality tests between `OrderedDict` objects and other Mapping objects are order-insensitive like regular dictionaries.
+- The reason for this equality is behavior  is that it allows `OrderedDict` objects to be directly substituted anywhere a regular dictionary is used.
+- Okay, so why did changing the order affect the lenght of the generated `set` object? The answer is the lack of intransitive equality only. Since sets are "unordered" collections of unique elements, the order in which elements are inserted shouldn't matter. But in this case, it does matter. Let's break it down a bit,
+    ```py
+    >>> some_set = set()
+    >>> some_set.add(dictionary) # these are the mapping objects from the snippets above
+    >>> ordered_dict in some_set
+    True
+    >>> some_set.add(ordered_dict)
+    >>> len(some_set)
+    1
+    >>> another_ordered_dict in some_set
+    True
+    >>> some_set.add(another_ordered_dict)
+    >>> len(some_set)
+    1
+
+    >>> another_set = set()
+    >>> another_set.add(ordered_dict)
+    >>> another_ordered_dict in another_set
+    False
+    >>> another_set.add(another_ordered_dict)
+    >>> len(another_set)
+    2
+    >>> dictionary in another_set
+    True
+    >>> another_set.add(another_ordered_dict)
+    >>> len(another_set)
+    2
+    ```
+    So the inconsistency is due to `another_ordered_dict in another_set` being False because `ordered_dict` was already present in `another_set` and as observed before, `ordered_dict == another_ordered_dict` is `False`.
+
+
+---
+
+### ▶ Keep trying? *
+<!-- Example ID: b4349443-e89f-4d25-a109-82616be9d41a --->
 ```py
 def some_func():
     try:
         return 'from_try'
     finally:
         return 'from_finally'
+
+def another_func():
+    for _ in range(3):
+        try:
+            continue
+        finally:
+            print("Finally!")
+
+def one_more_func(): # A gotcha!
+    try:
+        for i in range(3):
+            try:
+                1 / i
+            except ZeroDivisionError:
+                # Let's throw it here and handle it outside for loop
+                raise ZeroDivisionError("A trivial divide by zero error")
+            finally:
+                print("Iteration", i)
+                break
+    except ZeroDivisionError as e:
+        print("Zero division error ocurred", e)
 ```
 
 **Output:**
+
 ```py
 >>> some_func()
 'from_finally'
+
+>>> another_func()
+Finally!
+Finally!
+Finally!
+
+>>> 1 / 0
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ZeroDivisionError: division by zero
+
+>>> one_more_func()
+Iteration 0
+
 ```
 
 #### 💡 Explanation:
 
 - When a `return`, `break` or `continue` statement is executed in the `try` suite of a "try…finally" statement, the `finally` clause is also executed ‘on the way out.
 - The return value of a function is determined by the last `return` statement executed. Since the `finally` clause always executes, a `return` statement executed in the `finally` clause will always be the last one executed.
+- The caveat here is, if the finally clause executes a `return` or `break` statement, the temporarily saved exception is discarded.
 
 ---
 
 ### ▶ Deep down, we're all the same. *
-
+<!-- Example ID: 8f99a35f-1736-43e2-920d-3b78ec35da9b --->
 ```py
 class WTF:
   pass
@@ -321,7 +502,7 @@ True
 ---
 
 ### ▶ For what?
-
+<!-- Example ID: 64a9dccf-5083-4bc9-98aa-8aeecde4f210 --->
 ```py
 some_string = "wtf"
 some_dict = {}
@@ -373,8 +554,8 @@ for i, some_dict[i] in enumerate(some_string):
 
 ---
 
-### ▶ Evaluation time discrepancy
-
+### ▶ Evaluation time discrepancy ^
+<!-- Example ID: 6aa11a4b-4cf1-467a-b43a-810731517e98 --->
 1\.
 ```py
 array = [1, 8, 15]
@@ -409,6 +590,23 @@ array_2[:] = [1,2,3,4,5]
 [1,2,3,4,5]
 ```
 
+3\.
+
+```py
+array_3 = [1, 2, 3]
+array_4 = [10, 20, 30]
+g = (i + j for i in array_3 for j in array_4)
+
+array_3 = [4, 5, 6]
+array_4 = [400, 500, 600]
+```
+
+**Output:**
+```py
+>>> print(list(g))
+[401, 501, 601, 402, 502, 602, 403, 503, 603]
+```
+
 #### 💡 Explanation
 
 - In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at runtime.
@@ -416,13 +614,17 @@ array_2[:] = [1,2,3,4,5]
 - The differences in the output of `g1` and `g2` in the second part is due the way variables `array_1` and `array_2` are re-assigned values.
 - In the first case, `array_1` is binded to the new object `[1,2,3,4,5]` and since the `in` clause is evaluated at the declaration time it still refers to the old object `[1,2,3,4]` (which is not destroyed).
 - In the second case, the slice assignment to `array_2` updates the same old object `[1,2,3,4]` to `[1,2,3,4,5]`. Hence both the `g2` and `array_2` still have reference to the same object (which has now been updated to `[1,2,3,4,5]`).
+- Okay, going by the logic discussed so far, shouldn't be the value of `list(g)` in the third snippet be `[11, 21, 31, 12, 22, 32, 13, 23, 33]`? (because `array_3` and `array_4` are going to behave just like `array_1`). The reason why (only) `array_4` values got updated is explained in [PEP-289](https://www.python.org/dev/peps/pep-0289/#the-details)
+
+    > Only the outermost for-expression is evaluated immediately, the other expressions are deferred until the generator is run.
 
 ---
 
-### ▶ `is` is not what it is!
-
+### ▶ Messing around with `is` operator^
+<!-- Example ID: 230fa2ac-ab36-4ad1-b675-5f5a1c1a6217 --->
 The following is a very famous example present all over the internet.
 
+1\.
 ```py
 >>> a = 256
 >>> b = 256
@@ -432,6 +634,37 @@ True
 >>> a = 257
 >>> b = 257
 >>> a is b
+False
+```
+
+2\.
+
+```py
+>>> a = []
+>>> b = []
+>>> a is b
+False
+
+>>> a = tuple()
+>>> b = tuple()
+>>> a is b
+True
+```
+
+3\.
+**Output (< Python 3.7)**
+```
+>>> a, b = 257, 257
+True
+
+>>> a = 257; b = 257
+>>> a is b
+True
+```
+
+**Output (Python 3.7)**
+```
+>>> a, b = 257, 257
 False
 
 >>> a = 257; b = 257
@@ -447,9 +680,8 @@ True
 * `==` operator compares the values of both the operands and checks if they are the same.
 * So `is` is for reference equality and `==` is for value equality. An example to clear things up,
   ```py
-  >>> [] == []
-  True
-  >>> [] is [] # These are two empty lists at two different memory locations.
+  >>> class A: pass
+  >>> A() is A() # These are two empty objects at two different memory locations.
   False
   ```
 
@@ -481,8 +713,11 @@ Quoting from https://docs.python.org/3/c-api/long.html
 
 Here the interpreter isn't smart enough while executing `y = 257` to recognize that we've already created an integer of the value `257,` and so it goes on to create another object in the memory.
 
+Similar optimization applies to other **immutable** objects like empty tuples as well. Since lists are mutable, that's why `[] is []` will return `False` and `() is ()` will return `True`. This explains our second snippet. Let's move on to the third one,
+
 **Both `a` and `b` refer to the same object when initialized with same value in the same line.**
 
+**Output (< Python 3.7)**
 ```py
 >>> a, b = 257, 257
 >>> id(a)
@@ -499,11 +734,12 @@ Here the interpreter isn't smart enough while executing `y = 257` to recognize t
 
 * When a and b are set to `257` in the same line, the Python interpreter creates a new object, then references the second variable at the same time. If you do it on separate lines, it doesn't "know" that there's already `257` as an object.
 * It's a compiler optimization and specifically applies to the interactive environment. When you enter two lines in a live interpreter, they're compiled separately, therefore optimized separately. If you were to try this example in a `.py` file, you would not see the same behavior, because the file is compiled all at once.
+* Why didn't this work for Python 3.7? The abstract reason is because such compiler optimizations are implementation specific (i.e. may change with version, OS, etc). I'm still figuring out what exact implementation change cause the issue, you can check out this [issue](https://github.com/satwikkansal/wtfpython/issues/100) for updates.
 
 ---
 
 ### ▶ A tic-tac-toe where X wins in the first attempt!
-
+<!-- Example ID: 69329249-bdcb-424f-bd09-cca2e6705a7a --->
 ```py
 # Let's initialize a row
 row = [""]*3 #row i['', '', '']
@@ -530,11 +766,11 @@ We didn't assign 3 "X"s or did we?
 
 When we initialize `row` variable, this visualization explains what happens in the memory
 
-![image](/images/tic-tac-toe/after_row_initialized.png)
+![image](images/tic-tac-toe/after_row_initialized.png)
 
 And when the `board` is initialized by multiplying the `row`, this is what happens inside the memory (each of the elements `board[0]`, `board[1]` and `board[2]` is a reference to the same list referred by `row`)
 
-![image](/images/tic-tac-toe/after_board_initialized.png)
+![image](images/tic-tac-toe/after_board_initialized.png)
 
 We can avoid this scenario here by not using `row` variable to generate `board`. (Asked in [this](https://github.com/satwikkansal/wtfpython/issues/68) issue).
 
@@ -548,7 +784,7 @@ We can avoid this scenario here by not using `row` variable to generate `board`.
 ---
 
 ### ▶ The sticky output function
-
+<!-- Example ID: 4dc42f77-94cb-4eb5-a120-8203d3ed7604 --->
 ```py
 funcs = []
 results = []
@@ -601,8 +837,56 @@ Even when the values of `x` were different in every iteration prior to appending
 
 ---
 
-### ▶ `is not ...` is not `is (not ...)`
+### ▶ The chicken-egg problem ^
+<!-- Example ID: 60730dc2-0d79-4416-8568-2a63323b3ce8 --->
+1\.
+```py
+>>> isinstance(3, int)
+True
+>>> isinstance(type, object)
+True
+>>> isinstance(object, type)
+True
+```
 
+2\. So which is the ultimate, base class? And wait, there's more to the confusion
+
+```py
+>>> class A: pass
+>>> isinstance(A, A)
+False
+>>> isinstance(type, type)
+True
+>>> isinstance(object, object)
+True
+```
+
+3\.
+
+```py
+>>> issubclass(int, object)
+True
+>>> issubclass(type, object)
+True
+>>> issubclass(object, type)
+False
+```
+
+
+#### 💡 Explanation
+
+- `type` is a [metaclass](https://realpython.com/python-metaclasses/) in Python.
+- **Everything** is an `object` in Python, which includes classes as well as their objects (instances).
+- class `type` is the metaclass of class `object`, and every class (including `type`) has inherited directly or indirectly from `object`.
+- There is no real base class among `object` and `type`. The confusion in the above snippets is arising because we're thinking these relationships (`issubclass` and `isinstance`) in terms of Python classes. The relationship between `object` and `type` can't be reproduced in pure python. To be more precise the following relationships can't be reproduced in pure Python,
+    + class A is instance of class B, and class B is an instance of class A.
+    + class A is an instance of itself.
+- These relationships between `object` and `type` (both being instances of eachother as well as themselves) exist in Python because of "cheating" at implementation level.
+
+---
+
+### ▶ `is not ...` is not `is (not ...)`
+<!-- Example ID: b26fb1ed-0c7d-4b9c-8c6d-94a58a055c0d --->
 ```py
 >>> 'something' is not None
 True
@@ -618,7 +902,7 @@ False
 ---
 
 ### ▶ The surprising comma
-
+<!-- Example ID: 31a819c8-ed73-4dcc-84eb-91bedbb51e58 --->
 **Output:**
 ```py
 >>> def f(x, y,):
@@ -647,35 +931,51 @@ SyntaxError: invalid syntax
 
 ---
 
-### ▶ Backslashes at the end of string
-
+### ▶ Strings and the backslashes\ ^
+<!-- Example ID: 6ae622c3-6d99-4041-9b33-507bd1a4407b --->
 **Output:**
-```
->>> print("\\ C:\\")
-\ C:\
->>> print(r"\ C:")
-\ C:
->>> print(r"\ C:\")
+```py
+>>> print("\"")
+"
 
-    File "<stdin>", line 1
-      print(r"\ C:\")
-                     ^
+>>> print(r"\"")
+\"
+
+>>> print(r"\")
+File "<stdin>", line 1
+    print(r"\")
+              ^
 SyntaxError: EOL while scanning string literal
+
+>>> r'\'' == "\\'"
+True
 ```
 
 #### 💡 Explanation
 
-- In a raw string literal, as indicated by the prefix `r`, the backslash doesn't have the special meaning.
-  ```py
-  >>> print(repr(r"wt\"f"))
-  'wt\\"f'
-  ```
-- What the interpreter actually does, though, is simply change the behavior of backslashes, so they pass themselves and the following character through. That's why backslashes don't work at the end of a raw string.
+- In a normal python string, the backslash is used to escape characters that may have special meaning (like single-quote, double-quote and the backslash itself).
+    ```py
+    >>> 'wt\"f'
+    'wt"f'
+    ```
+- In a raw string literal (as indicated by the prefix `r`),  the backslashes pass themselves as is along with the behavior of escaping the following character.
+    ```py
+    >>> r'wt\"f' == 'wt\\"f'
+    True
+    >>> print(repr(r'wt\"f')
+    'wt\\"f'
+
+    >>> print("\n")
+
+    >>> print(r"\\n")
+    '\\\\n'
+    ```
+- This means when a parser encounters a backslash in a raw string, it expects another character following it. And in our case (`print(r"\")`), the backslash escaped the trailing quote, leaving the parser without a terminating quote (hence the `SyntaxError`). That's why backslashes don't work at the end of a raw string.
 
 ---
 
 ### ▶ not knot!
-
+<!-- Example ID: 7034deb1-7443-417d-94ee-29a800524de8 --->
 ```py
 x = True
 y = False
@@ -702,7 +1002,7 @@ SyntaxError: invalid syntax
 ---
 
 ### ▶ Half triple-quoted strings
-
+<!-- Example ID: c55da3e2-1034-43b9-abeb-a7a970a2ad9e --->
 **Output:**
 ```py
 >>> print('wtfpython''')
@@ -727,7 +1027,7 @@ wtfpython
 ---
 
 ### ▶ Midnight time doesn't exist?
-
+<!-- Example ID: 1bce8294-5619-4d70-8ce3-fe0bade690d1 --->
 ```py
 from datetime import datetime
 
@@ -757,7 +1057,7 @@ Before Python 3.5, the boolean value for `datetime.time` object was considered t
 ---
 
 ### ▶ What's wrong with booleans?
-
+<!-- Example ID: 0bba5fa7-9e6d-4cd2-8b94-952d061af5dd --->
 1\.
 ```py
 # A simple example to count the number of boolean and
@@ -826,7 +1126,7 @@ another_dict[1.0] = "Python"
 ---
 
 ### ▶ Class attributes and instance attributes
-
+<!-- Example ID: 6f332208-33bd-482d-8106-42863b739ed9 --->
 1\.
 ```py
 class A:
@@ -896,7 +1196,7 @@ True
 ---
 
 ### ▶ yielding None
-
+<!-- Example ID: 5a40c241-2c30-40d0-8ba9-cf7e097b3b53 --->
 ```py
 some_iterable = ('a', 'b')
 
@@ -925,7 +1225,7 @@ def some_func(val):
 ---
 
 ### ▶ Mutating the immutable!
-
+<!-- Example ID: 15a9e782-1695-43ea-817a-a9208f6bb33d --->
 ```py
 some_tuple = ("A", "tuple", "with", "values")
 another_tuple = ([1, 2], [3, 4], [5, 6])
@@ -958,7 +1258,7 @@ But I thought tuples were immutable...
 ---
 
 ### ▶ The disappearing variable from outer scope
-
+<!-- Example ID: 7f1e71b6-cb3e-44fb-aa47-87ef1b7decc8 --->
 ```py
 e = 7
 try:
@@ -1038,7 +1338,7 @@ NameError: name 'e' is not defined
 ---
 
 ### ▶ When True is actually False
-
+<!-- Example ID: c8317047-48ae-4306-af5a-04c6d8b7c2b9 --->
 ```py
 True = False
 if True == False:
@@ -1057,8 +1357,57 @@ I've lost faith in truth!
 
 ---
 
-### ▶ From filled to None in one instruction...
+### ▶ Lossy zip of iterators
+<!-- Example ID: c28ed154-e59f-4070-8eb6-8967a4acac6d --->
+```py
+>>> numbers = list(range(7))
+>>> numbers
+[0, 1, 2, 3, 4, 5, 6]
+>>> first_three, remaining = numbers[:3], numbers[3:]
+>>> first_three, remaining
+([0, 1, 2], [3, 4, 5, 6])
+>>> numbers_iter = iter(numbers)
+>>> list(zip(numbers_iter, first_three))
+[(0, 0), (1, 1), (2, 2)]
+# so far so good, let's zip the remaining
+>>> list(zip(numbers_iter, remaining))
+[(4, 3), (5, 4), (6, 5)]
+```
+Where did element `3` go from the `numbers` list?
 
+#### 💡 Explanation:
+
+- From Python [docs](https://docs.python.org/3.3/library/functions.html#zip), here's an approximate implementation of zip function,
+    ```py
+    def zip(*iterables):
+        sentinel = object()
+        iterators = [iter(it) for it in iterables]
+        while iterators:
+            result = []
+            for it in iterators:
+                elem = next(it, sentinel)
+                if elem is sentinel:
+                    return
+                result.append(elem)
+            yield tuple(result)
+    ```
+- So the function takes in arbitrary number of itreable objects, adds each of their items to the `result` list by calling the `next` function on them, and stops whenever any of the iterable is exhausted.
+- The caveat here is when any iterable is exhausted, the existing elements in the `result` list are discarded. That's what happened with `3` in the `numbers_iter`.
+- The correct way to do the above using `zip` would be,
+    ```py
+    >>> numbers = list(range(7))
+    >>> numbers_iter = iter(numbers)
+    >>> list(zip(first_three, numbers_iter))
+    [(0, 0), (1, 1), (2, 2)]
+    >>> list(zip(remaining, numbers_iter))
+    [(3, 3), (4, 4), (5, 5), (6, 6)]
+    ```
+    The first argument of zip should be the one with fewest elements.
+
+---
+
+### ▶ From filled to None in one instruction...
+<!-- Example ID: 9a0d5335-efe5-4eae-af44-584d15233066 --->
 ```py
 some_list = [1, 2, 3]
 some_dict = {
@@ -1086,7 +1435,7 @@ Most methods that modify the items of sequence/mapping objects like `list.append
 ---
 
 ### ▶ Subclass relationships *
-
+<!-- Example ID: 9f6d8cf0-e1b5-42d0-84a0-4cfab25a0bc0 --->
 **Output:**
 ```py
 >>> from collections import Hashable
@@ -1110,7 +1459,7 @@ The Subclass relationships were expected to be transitive, right? (i.e., if `A` 
 ---
 
 ### ▶ The mysterious key type conversion *
-
+<!-- Example ID: 00f42dd0-b9ef-408d-9e39-1bc209ce3f36 --->
 ```py
 class SomeClass(str):
     pass
@@ -1166,7 +1515,7 @@ str
 ---
 
 ### ▶ Let's see if you can guess this?
-
+<!-- Example ID: 81aa9fbe-bd63-4283-b56d-6fdd14c9105e --->
 ```py
 a, b = a[b] = {}, 5
 ```
@@ -1184,7 +1533,8 @@ a, b = a[b] = {}, 5
   (target_list "=")+ (expression_list | yield_expression)
   ```
   and
-  > An assignment statement evaluates the expression list (remember that this can be a single expression or a comma-separated list, the latter yielding a tuple) and assigns the single resulting object to each of the target lists, from left to right.
+
+> An assignment statement evaluates the expression list (remember that this can be a single expression or a comma-separated list, the latter yielding a tuple) and assigns the single resulting object to each of the target lists, from left to right.
 
 * The `+` in `(target_list "=")+` means there can be **one or more** target lists. In this case, target lists are `a, b` and `a[b]` (note the expression list is exactly one, which in our case is `{}, 5`).
 
@@ -1319,6 +1669,7 @@ Shouldn't that be 100?
 
 * **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
 * This is how Python handles tabs:
+
   > First, tabs are replaced (from left to right) by one to eight spaces such that the total number of characters up to and including the replacement is a multiple of eight <...>
 * So the "tab" at the last line of `square` function is replaced with eight spaces, and it gets into the loop.
 * Python 3 is kind enough to throw an error for such cases automatically.
@@ -1366,7 +1717,7 @@ Yes, it runs for exactly **eight** times and stops.
 * Iteration over a dictionary that you edit at the same time is not supported.
 * It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
 * How deleted keys are handled and when the resize occurs might be different for different Python implementations.
-* For more information, you may refer to this StackOverflow [thread](https://stackoverflow.com/questions/44763802/bug-in-python-dict) explaining a similar example in detail.
+* So for Python versions other than Python 2.7 - Python 3.5 the count might be different from 8 (but whatever the count is, it's going to be the same every time you run it). You can find some discussion around this [here](https://github.com/satwikkansal/wtfpython/issues/53) or in [this](https://stackoverflow.com/questions/44763802/bug-in-python-dict) StackOverflow thread.
 
 ---
 
@@ -1508,21 +1859,22 @@ print(x, ': x in global')
 ```
 
 3\.
-```
-x = 1
-print([x for x in range(5)])
-print(x, ': x in global')
-```
 
-**Output (on Python 2.x):**
+**Output (Python 2.x):**
 ```
+>>> x = 1
+>>> print([x for x in range(5)])
 [0, 1, 2, 3, 4]
+>>> print(x, ': x in global')
 (4, ': x in global')
 ```
 
-**Output (on Python 3.x):**
+**Output (Python 3.x):**
 ```
+>>> x = 1
+>>> print([x for x in range(5)])
 [0, 1, 2, 3, 4]
+>>> print(x, ': x in global')
 1 : x in global
 ```
 
@@ -1835,9 +2187,10 @@ class SomeClass:
 - A generator expression has its own scope.
 - Starting from Python 3.X, list comprehensions also have their own scope.
 
+
 ---
 
-### ▶ Needle in a Haystack
+### ▶ Needles in a Haystack ^
 
 1\.
 ```py
@@ -1876,12 +2229,126 @@ e
 tuple()
 ```
 
+3\.
+
+```
+ten_words_list = [
+    "some",
+    "very",
+    "big",
+    "list",
+    "that"
+    "consists",
+    "of",
+    "exactly",
+    "ten",
+    "words"
+]
+```
+
+**Output**
+
+```py
+>>> len(ten_words_list)
+9
+```
+
+4\. Not asserting strongly enough
+
+```py
+a = "python"
+b = "javascript"
+```
+**Output:**
+```py
+# An assert statement with an assertion failure message.
+>>> assert(a == b, "Both languages are different")
+# No AssertionError is raised
+```
+
 #### 💡 Explanation:
 * For 1, the correct statement for expected behavior is `x, y = (0, 1) if True else (None, None)`.
 * For 2, the correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
 * `()` is a special token and denotes empty `tuple`.
+* In 3, as you might have already figured out, there's a missing comma after 5th element (`"that"`) in the list. So by implicit string literal concatenation,
+    ```py
+    >>> ten_words_list
+    ['some', 'very', 'big', 'list', 'thatconsists', 'of', 'exactly', 'ten', 'words']
+    ```
+* No `AssertionError` was raised in 4th snippet because instead of asserting the individual expression `a == b`, we're asserting entire tuple. The following snippet will clear things up,
+    ```py
+    >>> a = "python"
+    >>> b = "javascript"
+    >>> assert a == b
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in <module>
+    AssertionError
+
+    >>> assert (a == b, "Values are not equal")
+    <stdin>:1: SyntaxWarning: assertion is always true, perhaps remove parentheses?
+
+    >>> assert a == b, "Values are not equal"
+    Traceback (most recent call last):
+        File "<stdin>", line 1, in <module>
+    AssertionError: Values aren not equal
+    ```
 
 ---
+
+### ▶ Wild imports
+
+```py
+# File: module.py
+
+def some_weird_name_func_():
+    print("works!")
+
+def _another_weird_name_func():
+    print("works!")
+
+```
+
+**Output**
+
+```py
+>>> from module import *
+>>> some_weird_name_func_()
+"works!"
+>>> _another_weird_name_func()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name '_another_weird_name_func' is not defined
+```
+
+#### 💡 Explanation:
+
+- It if often adivsable to not use wildcard imports. In wildcard imports, the names with leading underscore are be imported. This may lead to errors in runtime.
+- Had we used `from ... import a, b, c` syntax, the above `NameError` won't have occurred.
+    ```py
+    >>> from module import some_weird_name_func_, _another_weird_name_func
+    >>> _another_weird_name_func()
+    works!
+    ```
+- If you really want to use wildcard imports, then you'd have to define the list `__all__` in your module that will contain a list of public objects that'll be available when we do wildcard imports.
+```py
+__all__ = ['_another_weird_name_func']
+
+def some_weird_name_func_():
+    print("works!")
+
+def _another_weird_name_func():
+    print("works!")
+```
+**Output**
+
+```py
+>>> _another_weird_name_func()
+"works!"
+>>> some_weird_name_func_()
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'some_weird_name_func_' is not defined
+```
 
 ---
 
@@ -1951,15 +2418,17 @@ from __future__ import braces
 SyntaxError: not a chance
 ```
 
-Braces? No way! If you think that's disappointing, use Java.
+Braces? No way! If you think that's disappointing, use Java. Okay, another surprising thing, can you find where's the `SyntaxError` raised in `__future__` module [code](https://github.com/python/cpython/blob/master/Lib/__future__.py)?
 
 #### 💡 Explanation:
-+ The `__future__` module is normally used to provide features from future versions of Python. The "future" here is however ironic.
++ The `__future__` module is normally used to provide features from future versions of Python. The "future" in this specific context is however ironic.
 + This is an easter egg concerned with the community's feelings on this issue.
++ The code is actually present [here](https://github.com/python/cpython/blob/025eb98dc0c1dc27404df6c544fc2944e0fa9f3a/Python/future.c#L49) in `future.c` file.
++ When the CPython compiler encounters a [future statement](https://docs.python.org/3.3/reference/simple_stmts.html#future-statements), it first runs the appropriate code in `future.c` before treating it as a normal import statement.
 
 ---
 
-### ▶ Let's meet Friendly Language Uncle For Life *
+### ▶ Let's meet Friendly Language Uncle For Life ^
 
 **Output (Python 3.x)**
 ```py
@@ -1979,8 +2448,14 @@ There we go.
 #### 💡 Explanation:
 - This is relevant to [PEP-401](https://www.python.org/dev/peps/pep-0401/) released on April 1, 2009 (now you know, what it means).
 - Quoting from the PEP-401
+
   > Recognized that the != inequality operator in Python 3.0 was a horrible, finger pain inducing mistake, the FLUFL reinstates the <> diamond operator as the sole spelling.
 - There were more things that Uncle Barry had to share in the PEP; you can read them [here](https://www.python.org/dev/peps/pep-0401/).
+- It works well on interactive environment, but it will raise a `SyntaxError` when you run via python file (see this [issue](https://github.com/satwikkansal/wtfpython/issues/94)). However, you can wrap the statement inside an `eval` or `compile` to get it working,
+    ```py
+    from __future__ import barry_as_FLUFL
+    print(eval('"Ruby" <> "Python"'))
+    ```
 
 ---
 
@@ -2085,6 +2560,65 @@ Try block executed successfully...
 - `else` clause after try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
 
 ---
+### ▶ Ellipsis ^
+
+```py
+def some_func():
+    Ellipsis
+```
+
+**Output**
+```py
+>>> some_func()
+# No output, No Error
+
+>>> SomeRandomString
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'SomeRandomString' is not defined
+
+>>> Ellipsis
+Ellipsis
+```
+
+#### 💡 Explanation
+- In Python, `Ellipsis` is a globally available builtin object which is equivalent to `...`.
+    ```py
+    >>> ...
+    Ellipsis
+    ```
+- Eliipsis can be used for several purposes,
+    + As a placeholder for code that hasn't been written yet (just like `pass` statement)
+    + In slicing syntax to represent the full slices in remaining direction
+    ```py
+    >>> import numpy as np
+    >>> three_dimensional_array = np.arange(8).reshape(2, 2, 2)
+    array([
+        [
+            [0, 1],
+            [2, 3]
+        ],
+
+        [
+            [4, 5],
+            [6, 7]
+        ]
+    ])
+    ```
+    So our `three_dimensional_array` is an array of array of arrays. Let's say we want to print the second element (index `1`) of all the innermost arrays, we can use Ellipsis to bypass all the preceding dimensions
+    ```py
+    >>> three_dimensional_array[:,:,1]
+    array([[1, 3],
+       [5, 7]])
+    >>> three_dimensional_array[..., 1] # using Ellipsis.
+    array([[1, 3],
+       [5, 7]])
+    ```
+    Note: this will work for any number of dimensions. You can even select slice in first and last dimension and ignore the middle ones this way (`n_dimensional_array[firs_dim_slice, ..., last_dim_slice]`)
+    + In [type hinting](https://docs.python.org/3/library/typing.html) to indicate only a part of the type (like `(Callable[..., int]` or `Tuple[str, ...]`))
+    + You may also use Ellipsis as a default function argument (in the cases when you want to differentiate between the "no argument passed" and "None value passed" scenarios).
+
+---
 
 ### ▶ Inpinity *
 
@@ -2111,12 +2645,12 @@ The spelling is intended. Please, don't submit a patch for this.
 class Yo(object):
     def __init__(self):
         self.__honey = True
-        self.bitch = True
+        self.bro = True
 ```
 
 **Output:**
 ```py
->>> Yo().bitch
+>>> Yo().bro
 True
 >>> Yo().__honey
 AttributeError: 'Yo' object has no attribute '__honey'
@@ -2124,7 +2658,7 @@ AttributeError: 'Yo' object has no attribute '__honey'
 True
 ```
 
-Why did `Yo()._Yo__honey` work? Only Indian readers would understand.
+Why did `Yo()._Yo__honey` work?
 
 #### 💡 Explanation:
 
@@ -2133,6 +2667,10 @@ Why did `Yo()._Yo__honey` work? Only Indian readers would understand.
 * So, to access `__honey` attribute, we are required to append `_Yo` to the front which would prevent conflicts with the same name attribute defined in any other class.
 
 ---
+
+
+
+
 
 ---
 
@@ -2188,40 +2726,47 @@ def convert_list_to_string(l, iters):
 ```
 
 **Output:**
+
 ```py
->>> timeit(add_string_with_plus(10000))
-1000 loops, best of 3: 972 µs per loop
->>> timeit(add_bytes_with_plus(10000))
-1000 loops, best of 3: 815 µs per loop
->>> timeit(add_string_with_format(10000))
-1000 loops, best of 3: 508 µs per loop
->>> timeit(add_string_with_join(10000))
-1000 loops, best of 3: 878 µs per loop
->>> l = ["xyz"]*10000
->>> timeit(convert_list_to_string(l, 10000))
-10000 loops, best of 3: 80 µs per loop
+# Executed in ipython shell using %timeit for better readablity of results.
+# You can also use the timeit module in normal python shell/scriptm=, example usage below
+# timeit.timeit('add_string_with_plus(10000)', number=1000, globals=globals())
+
+>>> NUM_ITERS = 1000
+>>> %timeit -n1000 add_string_with_plus(NUM_ITERS)
+124 µs ± 4.73 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
+>>> %timeit -n1000 add_bytes_with_plus(NUM_ITERS)
+211 µs ± 10.5 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> %timeit -n1000 add_string_with_format(NUM_ITERS)
+61 µs ± 2.18 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> %timeit -n1000 add_string_with_join(NUM_ITERS)
+117 µs ± 3.21 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> l = ["xyz"]*NUM_ITERS
+>>> %timeit -n1000 convert_list_to_string(l, NUM_ITERS)
+10.1 µs ± 1.06 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 ```
 
 Let's increase the number of iterations by a factor of 10.
 
 ```py
->>> timeit(add_string_with_plus(100000)) # Linear increase in execution time
-100 loops, best of 3: 9.75 ms per loop
->>> timeit(add_bytes_with_plus(100000)) # Quadratic increase
-1000 loops, best of 3: 974 ms per loop
->>> timeit(add_string_with_format(100000)) # Linear increase
-100 loops, best of 3: 5.25 ms per loop
->>> timeit(add_string_with_join(100000)) # Linear increase
-100 loops, best of 3: 9.85 ms per loop
->>> l = ["xyz"]*100000
->>> timeit(convert_list_to_string(l, 100000)) # Linear increase
-1000 loops, best of 3: 723 µs per loop
+>>> NUM_ITERS = 10000
+>>> %timeit -n1000 add_string_with_plus(NUM_ITERS) # Linear increase in execution time
+1.26 ms ± 76.8 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> %timeit -n1000 add_bytes_with_plus(NUM_ITERS) # Quadratic increase
+6.82 ms ± 134 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> %timeit -n1000 add_string_with_format(NUM_ITERS) # Linear increase
+645 µs ± 24.5 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> %timeit -n1000 add_string_with_join(NUM_ITERS) # Linear increase
+1.17 ms ± 7.25 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+>>> l = ["xyz"]*NUM_ITERS
+>>> %timeit -n1000 convert_list_to_string(l, NUM_ITERS) # Linear increase
+86.3 µs ± 2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 ```
 
 #### 💡 Explanation
-- You can read more about [timeit](https://docs.python.org/3/library/timeit.html) from here. It is generally used to measure the execution time of snippets.
+- You can read more about [timeit](https://docs.python.org/3/library/timeit.html) or [%timeit](https://ipython.org/ipython-doc/dev/interactive/magics.html#magic-timeit) on these links. They are used to measure the execution time of code pieces.
 - Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases (justified with the execution times of `add_bytes_with_plus` function)
-- Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for short strings).
+- Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for very short strings).
 - Or better, if already you've contents available in the form of an iterable object, then use `''.join(iterable_object)` which is much faster.
 - `add_string_with_plus` didn't show a quadratic increase in execution time unlike `add_bytes_with_plus` because of the `+=` optimizations discussed in the previous example. Had the statement been `s = s + "x" + "y" + "z"` instead of `s += "xyz"`, the increase would have been quadratic.
   ```py
@@ -2231,11 +2776,13 @@ Let's increase the number of iterations by a factor of 10.
           s = s + "x" + "y" + "z"
       assert len(s) == 3*iters
 
-  >>> timeit(add_string_with_plus(10000))
-  100 loops, best of 3: 9.87 ms per loop
-  >>> timeit(add_string_with_plus(100000)) # Quadratic increase in execution time
-  1 loops, best of 3: 1.09 s per loop
+  >>> %timeit -n100 add_string_with_plus(1000)
+  388 µs ± 22.4 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
+  >>> %timeit -n100 add_string_with_plus(10000) # Quadratic increase in execution time
+  9 ms ± 298 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
   ```
+- So many ways to format and create a giant string are somewhat in contrast to the [Zen of Python](https://www.python.org/dev/peps/pep-0020/), according to which,
+    > There should be one-- and preferably only one --obvious way to do it.
 
 ---
 
