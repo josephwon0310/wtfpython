@@ -1,6 +1,7 @@
 <p align="center"><img src="images/logo.png" alt=""></p>
 <h1 align="center">What the f*ck Python! 🐍</h1>
 <p align="center">놀라운 파이썬 코드 예제들과 생소한 기능들.</p>
+<p align="center">이 문서는 현재 번역이 진행 중인 미완성 문서입니다.</p>
 
 <p align="center">
 <a href="https://github.com/satwikkansal/wtfpython">English</a>
@@ -161,7 +162,7 @@ $ pip install wtfpython -U
 ## 섹션: 머리가 아플 수도 있어요!
 
 ### ▶ 알쏭달쏭 문자열 *
-
+<!-- Example ID: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --->
 1\.
 ```py
 >>> a = "some_string"
@@ -211,7 +212,7 @@ False
 ---
 
 ### ▶ Splitsies ^
-
+<!-- Example ID: ec3168ba-a81a-4482-afb0-691f1cc8d65a --->
 ```py
 >>> 'a'.split()
 ['a']
@@ -248,7 +249,7 @@ False
 
 
 ### ▶ Time for some hash brownies!
-
+<!-- Example ID: eb17db53-49fd-4b61-85d6-345c5ca213ff --->
 1\.
 ```py
 some_dict = {}
@@ -293,7 +294,7 @@ So, why is Python all over the place?
 ---
 
 ### ▶ The disorder within order ^
-
+<!-- Example ID: 91bff1f8-541d-455a-9de4-6cd8ff00ea66 --->
 ```py
 from collections import OrderedDict
 
@@ -391,7 +392,7 @@ What is going on here?
 ---
 
 ### ▶ Keep trying? *
-
+<!-- Example ID: b4349443-e89f-4d25-a109-82616be9d41a --->
 ```py
 def some_func():
     try:
@@ -451,7 +452,7 @@ Iteration 0
 ---
 
 ### ▶ Deep down, we're all the same. *
-
+<!-- Example ID: 8f99a35f-1736-43e2-920d-3b78ec35da9b --->
 ```py
 class WTF:
   pass
@@ -501,7 +502,7 @@ True
 ---
 
 ### ▶ For what?
-
+<!-- Example ID: 64a9dccf-5083-4bc9-98aa-8aeecde4f210 --->
 ```py
 some_string = "wtf"
 some_dict = {}
@@ -554,7 +555,7 @@ for i, some_dict[i] in enumerate(some_string):
 ---
 
 ### ▶ Evaluation time discrepancy ^
-
+<!-- Example ID: 6aa11a4b-4cf1-467a-b43a-810731517e98 --->
 1\.
 ```py
 array = [1, 8, 15]
@@ -620,7 +621,7 @@ array_4 = [400, 500, 600]
 ---
 
 ### ▶ Messing around with `is` operator^
-
+<!-- Example ID: 230fa2ac-ab36-4ad1-b675-5f5a1c1a6217 --->
 The following is a very famous example present all over the internet.
 
 1\.
@@ -738,7 +739,7 @@ Similar optimization applies to other **immutable** objects like empty tuples as
 ---
 
 ### ▶ A tic-tac-toe where X wins in the first attempt!
-
+<!-- Example ID: 69329249-bdcb-424f-bd09-cca2e6705a7a --->
 ```py
 # Let's initialize a row
 row = [""]*3 #row i['', '', '']
@@ -783,7 +784,7 @@ We can avoid this scenario here by not using `row` variable to generate `board`.
 ---
 
 ### ▶ The sticky output function
-
+<!-- Example ID: 4dc42f77-94cb-4eb5-a120-8203d3ed7604 --->
 ```py
 funcs = []
 results = []
@@ -837,7 +838,7 @@ Even when the values of `x` were different in every iteration prior to appending
 ---
 
 ### ▶ The chicken-egg problem ^
-
+<!-- Example ID: 60730dc2-0d79-4416-8568-2a63323b3ce8 --->
 1\.
 ```py
 >>> isinstance(3, int)
@@ -885,7 +886,7 @@ False
 ---
 
 ### ▶ `is not ...` is not `is (not ...)`
-
+<!-- Example ID: b26fb1ed-0c7d-4b9c-8c6d-94a58a055c0d --->
 ```py
 >>> 'something' is not None
 True
@@ -901,7 +902,7 @@ False
 ---
 
 ### ▶ The surprising comma
-
+<!-- Example ID: 31a819c8-ed73-4dcc-84eb-91bedbb51e58 --->
 **Output:**
 ```py
 >>> def f(x, y,):
@@ -931,7 +932,7 @@ SyntaxError: invalid syntax
 ---
 
 ### ▶ Strings and the backslashes\ ^
-
+<!-- Example ID: 6ae622c3-6d99-4041-9b33-507bd1a4407b --->
 **Output:**
 ```py
 >>> print("\"")
@@ -974,7 +975,7 @@ True
 ---
 
 ### ▶ not knot!
-
+<!-- Example ID: 7034deb1-7443-417d-94ee-29a800524de8 --->
 ```py
 x = True
 y = False
@@ -1001,7 +1002,7 @@ SyntaxError: invalid syntax
 ---
 
 ### ▶ Half triple-quoted strings
-
+<!-- Example ID: c55da3e2-1034-43b9-abeb-a7a970a2ad9e --->
 **Output:**
 ```py
 >>> print('wtfpython''')
@@ -1026,7 +1027,7 @@ wtfpython
 ---
 
 ### ▶ Midnight time doesn't exist?
-
+<!-- Example ID: 1bce8294-5619-4d70-8ce3-fe0bade690d1 --->
 ```py
 from datetime import datetime
 
@@ -1056,7 +1057,7 @@ Before Python 3.5, the boolean value for `datetime.time` object was considered t
 ---
 
 ### ▶ What's wrong with booleans?
-
+<!-- Example ID: 0bba5fa7-9e6d-4cd2-8b94-952d061af5dd --->
 1\.
 ```py
 # A simple example to count the number of boolean and
@@ -1125,7 +1126,7 @@ another_dict[1.0] = "Python"
 ---
 
 ### ▶ Class attributes and instance attributes
-
+<!-- Example ID: 6f332208-33bd-482d-8106-42863b739ed9 --->
 1\.
 ```py
 class A:
@@ -1195,7 +1196,7 @@ True
 ---
 
 ### ▶ yielding None
-
+<!-- Example ID: 5a40c241-2c30-40d0-8ba9-cf7e097b3b53 --->
 ```py
 some_iterable = ('a', 'b')
 
@@ -1224,7 +1225,7 @@ def some_func(val):
 ---
 
 ### ▶ Mutating the immutable!
-
+<!-- Example ID: 15a9e782-1695-43ea-817a-a9208f6bb33d --->
 ```py
 some_tuple = ("A", "tuple", "with", "values")
 another_tuple = ([1, 2], [3, 4], [5, 6])
@@ -1257,7 +1258,7 @@ But I thought tuples were immutable...
 ---
 
 ### ▶ The disappearing variable from outer scope
-
+<!-- Example ID: 7f1e71b6-cb3e-44fb-aa47-87ef1b7decc8 --->
 ```py
 e = 7
 try:
@@ -1337,7 +1338,7 @@ NameError: name 'e' is not defined
 ---
 
 ### ▶ When True is actually False
-
+<!-- Example ID: c8317047-48ae-4306-af5a-04c6d8b7c2b9 --->
 ```py
 True = False
 if True == False:
@@ -1357,7 +1358,7 @@ I've lost faith in truth!
 ---
 
 ### ▶ Lossy zip of iterators
-
+<!-- Example ID: c28ed154-e59f-4070-8eb6-8967a4acac6d --->
 ```py
 >>> numbers = list(range(7))
 >>> numbers
@@ -1406,7 +1407,7 @@ Where did element `3` go from the `numbers` list?
 ---
 
 ### ▶ From filled to None in one instruction...
-
+<!-- Example ID: 9a0d5335-efe5-4eae-af44-584d15233066 --->
 ```py
 some_list = [1, 2, 3]
 some_dict = {
@@ -1434,7 +1435,7 @@ Most methods that modify the items of sequence/mapping objects like `list.append
 ---
 
 ### ▶ Subclass relationships *
-
+<!-- Example ID: 9f6d8cf0-e1b5-42d0-84a0-4cfab25a0bc0 --->
 **Output:**
 ```py
 >>> from collections import Hashable
@@ -1458,7 +1459,7 @@ The Subclass relationships were expected to be transitive, right? (i.e., if `A` 
 ---
 
 ### ▶ The mysterious key type conversion *
-
+<!-- Example ID: 00f42dd0-b9ef-408d-9e39-1bc209ce3f36 --->
 ```py
 class SomeClass(str):
     pass
@@ -1514,7 +1515,7 @@ str
 ---
 
 ### ▶ Let's see if you can guess this?
-
+<!-- Example ID: 81aa9fbe-bd63-4283-b56d-6fdd14c9105e --->
 ```py
 a, b = a[b] = {}, 5
 ```
