@@ -1576,7 +1576,7 @@ a, b = a[b] = {}, 5
 ## Section: Appearances are deceptive!
 
 ### ▶ Skipping lines?
-
+<!-- Example ID: d50bbde1-fb9d-4735-9633-3444b9d2f417 --->
 **Output:**
 ```py
 >>> value = 11
@@ -1612,7 +1612,7 @@ The built-in `ord()` function returns a character's Unicode [code point](https:/
 ---
 
 ### ▶ Teleportation *
-
+<!-- Example ID: edafe923-0c20-4315-b6e1-0c31abfc38f5 --->
 ```py
 import numpy as np
 
@@ -1642,7 +1642,7 @@ Where's the Nobel Prize?
 ---
 
 ### ▶ Well, something is fishy...
-
+<!-- Example ID: cb6a37c5-74f7-44ca-b58c-3b902419b362 --->
 ```py
 def square(x):
     """
@@ -1687,7 +1687,7 @@ Shouldn't that be 100?
 
 
 ### ▶ Modifying a dictionary while iterating over it
-
+<!-- Example ID: b4e5cdfb-c3a8-4112-bd38-e2356d801c41 --->
 ```py
 x = {0: None}
 
@@ -1722,7 +1722,7 @@ Yes, it runs for exactly **eight** times and stops.
 ---
 
 ### ▶ Stubborn `del` operator *
-
+<!-- Example ID: 777ed4fd-3a2d-466f-95e7-c4058e61d78e --->
 ```py
 class SomeClass:
     def __del__(self):
@@ -1765,7 +1765,7 @@ Okay, now it's deleted :confused:
 ---
 
 ### ▶ Deleting a list item while iterating
-
+<!-- Example ID: 4cc52d4e-d42b-4e09-b25f-fbf5699b7d4e --->
 ```py
 list_1 = [1, 2, 3, 4]
 list_2 = [1, 2, 3, 4]
@@ -1825,7 +1825,7 @@ Can you guess why the output is `[2, 4]`?
 ---
 
 ### ▶ Loop variables leaking out!
-
+<!-- Example ID: ccec7bf6-7679-4963-907a-1cd8587be9ea --->
 1\.
 ```py
 for x in range(7):
@@ -1889,7 +1889,7 @@ print(x, ': x in global')
 ---
 
 ### ▶ Beware of default mutable arguments!
-
+<!-- Example ID: 7d42dade-e20d-4a7b-9ed7-16fb58505fe9 --->
 ```py
 def some_func(default_arg=[]):
     default_arg.append("some_string")
@@ -1946,7 +1946,7 @@ def some_func(default_arg=[]):
 ---
 
 ### ▶ Catching the Exceptions
-
+<!-- Example ID: b5ca5e6a-47b9-4f69-9375-cda0f8c6755d --->
 ```py
 some_list = [1, 2, 3]
 try:
@@ -2021,7 +2021,7 @@ SyntaxError: invalid syntax
 ---
 
 ### ▶ Same operands, different story!
-
+<!-- Example ID: ca052cdf-dd2d-4105-b936-65c28adc18a0 --->
 1\.
 ```py
 a = [1, 2, 3, 4]
@@ -2063,7 +2063,7 @@ a += [5, 6, 7, 8]
 ---
 
 ### ▶ The out of scope variable
-
+<!-- Example ID: 75c03015-7be9-4289-9e22-4f5fdda056f7 --->
 ```py
 a = 1
 def some_func():
@@ -2102,7 +2102,7 @@ UnboundLocalError: local variable 'a' referenced before assignment
 ---
 
 ### ▶ Be careful with chained operations
-
+<!-- Example ID: 07974979-9c86-4720-80bd-467aa19470d9 --->
 ```py
 >>> (False == False) in [False] # makes sense
 False
@@ -2147,7 +2147,7 @@ While such behavior might seem silly to you in the above examples, it's fantasti
 ---
 
 ### ▶ Name resolution ignoring class scope
-
+<!-- Example ID: 03f73d96-151c-4929-b0a8-f74430788324 --->
 1\.
 ```py
 x = 5
@@ -2191,7 +2191,7 @@ class SomeClass:
 ---
 
 ### ▶ Needles in a Haystack ^
-
+<!-- Example ID: 52a199b1-989a-4b28-8910-dff562cebba9 --->
 1\.
 ```py
 x, y = (0, 1) if True else None, None
@@ -2296,7 +2296,7 @@ b = "javascript"
 ---
 
 ### ▶ Wild imports
-
+<!-- Example ID: 83deb561-bd55-4461-bb5e-77dd7f411e1c --->
 ```py
 # File: module.py
 
@@ -2358,7 +2358,7 @@ NameError: name 'some_weird_name_func_' is not defined
 아래 섹션은 처음 접하는 사람들에게는 생소할 수도 있는 파이썬의 기능들을 소개합니다.
 
 ### ▶ 파이썬과 함께 나는 방법? *
-
+<!-- Example ID: a92f3645-1899-4d50-9721-0031be4aec3f --->
 방법이 궁금하세요? 아래 예제를 확인하세요!
 
 ```py
@@ -2377,7 +2377,7 @@ import antigravity
 ---
 
 ### ▶ `goto`, but why? *
-
+<!-- Example ID: 2aff961e-7fa5-4986-a18a-9e5894bd89fe --->
 ```py
 from goto import goto, label
 for i in range(9):
@@ -2405,7 +2405,7 @@ Freedom!
 ---
 
 ### ▶ Brace yourself! *
-
+<!-- Example ID: 5c0c75f2-ddd9-4da3-ba49-c4be7ec39acf --->
 If you are one of the people who doesn't like using whitespace in Python to denote scopes, you can use the C-style {} by importing,
 
 ```py
@@ -2430,7 +2430,7 @@ Braces? No way! If you think that's disappointing, use Java. Okay, another surpr
 ---
 
 ### ▶ Let's meet Friendly Language Uncle For Life ^
-
+<!-- Example ID: 6427fae6-e959-462d-85da-ce4c94ce41be --->
 **Output (Python 3.x)**
 ```py
 >>> from __future__ import barry_as_FLUFL
@@ -2461,7 +2461,7 @@ There we go.
 ---
 
 ### ▶ Even Python understands that love is complicated *
-
+<!-- Example ID: b93cad9e-d341-45d1-999c-fcdce65bed25 --->
 ```py
 import this
 ```
@@ -2518,7 +2518,7 @@ True
 ---
 
 ### ▶ Yes, it exists!
-
+<!-- Example ID: 4286db3d-1ea7-47c9-8fb6-a9a04cac6e49 --->
 **The `else` clause for loops.** One typical example might be:
 
 ```py
@@ -2562,7 +2562,7 @@ Try block executed successfully...
 
 ---
 ### ▶ Ellipsis ^
-
+<!-- Example ID: 969b7100-ab3d-4a7d-ad7d-a6be16181b2b --->
 ```py
 def some_func():
     Ellipsis
@@ -2622,7 +2622,7 @@ Ellipsis
 ---
 
 ### ▶ Inpinity *
-
+<!-- Example ID: ff473ea8-a3b1-4876-a6f0-4378aff790c1 --->
 The spelling is intended. Please, don't submit a patch for this.
 
 **Output (Python 3.x):**
@@ -2641,7 +2641,7 @@ The spelling is intended. Please, don't submit a patch for this.
 ---
 
 ### ▶ Mangling time! *
-
+<!-- Example ID: 37146d2d-9e67-43a9-8729-3c17934b910c --->
 ```py
 class Yo(object):
     def __init__(self):
@@ -2679,7 +2679,7 @@ Why did `Yo()._Yo__honey` work?
 
 
 ### ▶ `+=` is faster
-
+<!-- Example ID: bfd19c60-a807-4a26-9598-4912b86ddb36 --->
 ```py
 # using "+", three strings:
 >>> timeit.timeit("s1 = s1 + s2 + s3", setup="s1 = ' ' * 100000; s2 = ' ' * 100000; s3 = ' ' * 100000", number=100)
@@ -2695,7 +2695,7 @@ Why did `Yo()._Yo__honey` work?
 ---
 
 ### ▶ Let's make a giant string!
-
+<!-- Example ID: c7a07424-63fe-4504-9842-8f3d334f28fc --->
 ```py
 def add_string_with_plus(iters):
     s = ""
@@ -2788,7 +2788,7 @@ Let's increase the number of iterations by a factor of 10.
 ---
 
 ### ▶ Explicit typecast of strings
-
+<!-- Example ID: 59bee91a-36e0-47a4-8c7d-aa89bf1d3976 --->
 ```py
 a = float('inf')
 b = float('nan')
@@ -2827,7 +2827,7 @@ nan
 ---
 
 ### ▶ Minor Ones
-
+<!-- Example ID: f885cb82-f1e4-4daa-9ff3-972b14cb1324 --->
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
 
   **💡 Explanation:**
