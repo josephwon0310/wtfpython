@@ -32,6 +32,7 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
 - [👀 예제](#-예제)
   - [섹션: 머리가 아플 수도 있어요!](#섹션-머리가-아플-수도-있어요)
     - [▶ 알쏭달쏭 문자열](#-알쏭달쏭-문자열-)
+    - [▶ 스플릿스플릿!](#-스플릿스플릿-)
     - [▶ Time for some hash brownies!](#-time-for-some-hash-brownies)
     - [▶ Return return everywhere!](#-return-return-everywhere)
     - [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same-)
@@ -186,7 +187,7 @@ False
 
 3\.
 
-**결과 (< 파이썬 3.7 )**
+**(< 파이썬 3.7 )**
 
 ```py
 >>> 'a' * 20 is 'aaaaaaaaaaaaaaaaaaaa'
@@ -210,7 +211,7 @@ False
 
 ---
 
-### ▶ Splitsies
+### ▶ 스플릿스플릿!
 <!-- Example ID: ec3168ba-a81a-4482-afb0-691f1cc8d65a --->
 ```py
 >>> 'a'.split()
@@ -230,10 +231,11 @@ False
 ```
 
 #### 💡 설명:
-- It might appear at first that the default seperator for split is a single space `' '`, but as per the [docs](https://docs.python.org/2.7/library/stdtypes.html#str.split),
-    > If sep is not specified or is None, a different splitting algorithm is applied: runs of consecutive whitespace are regarded as a single separator, and the result will contain no empty strings at the start or end if the string has leading or trailing whitespace. Consequently, splitting an empty string or a string consisting of just whitespace with a None separator returns `[]`.
-    > If sep is given, consecutive delimiters are not grouped together and are deemed to delimit empty strings (for example, `'1,,2'.split(',')` returns `['1', '', '2']`). Splitting an empty string with a specified separator returns `['']`.
-- Noticing how the leading and trailing whitespaces are handled in the following snippet will make things clear,
+- 얼핏보면 파이썬 `split` 함수의 기본 값이 `' '`(스페이스)처럼 보이지만, 공식 [문서](https://docs.python.org/2.7/library/stdtypes.html#str.split)를 확인해보면...
+    > 만약 separator 값이 주어지지 않았거나, `None` 값을 주었을시에 이 함수는 다른 알고리즘을 사용합니다, 연속된 공백문자는 한개의 separator로 간주, 문자열의 앞 뒤로 있는 여백 역시 무시됩니다. 즉, 빈 문자열 혹은 여백으로 이루어진 문자열은 `[]`를 리턴합니다.
+
+    > 만약 separator 값이 주어졌을 경우, 서로 연속된 delimeter는 하나로 간주되지 않으며 사이사이마다 빈 문자열을 추가합니다(예: `'1,,2'.split(',')`는 `['1', '', '2']`를 리턴합니다. 가운데 추가된 빈 문자열인 `''`를 주목하세요.). 빈 문자열과  `None`이 아닌 separator값을 주었을 경우 `['']`를 반환합니다.
+- 두 경우에 따라 문자열 앞 뒤의 여백처리가 다른 점이 보이시나요?
     ```py
     >>> ' a '.split(' ')
     ['', 'a', '']
