@@ -31,10 +31,10 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
 - [사용 방법](#사용-방법)
 - [👀 예제](#-예제)
   - [섹션: 머리가 아플 수도 있어요!](#섹션-머리가-아플-수도-있어요)
-    - [▶ 알쏭달쏭 문자열 *](#-알쏭달쏭-문자열-)
+    - [▶ 알쏭달쏭 문자열](#-알쏭달쏭-문자열-)
     - [▶ Time for some hash brownies!](#-time-for-some-hash-brownies)
     - [▶ Return return everywhere!](#-return-return-everywhere)
-    - [▶ Deep down, we're all the same. *](#-deep-down-were-all-the-same-)
+    - [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same-)
     - [▶ For what?](#-for-what)
     - [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
     - [▶ `is` is not what it is!](#-is-is-not-what-it-is)
@@ -53,16 +53,16 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
     - [▶ The disappearing variable from outer scope](#-the-disappearing-variable-from-outer-scope)
     - [▶ When True is actually False](#-when-true-is-actually-false)
     - [▶ From filled to None in one instruction...](#-from-filled-to-none-in-one-instruction)
-    - [▶ Subclass relationships *](#-subclass-relationships-)
-    - [▶ The mysterious key type conversion *](#-the-mysterious-key-type-conversion-)
+    - [▶ Subclass relationships](#-subclass-relationships-)
+    - [▶ The mysterious key type conversion](#-the-mysterious-key-type-conversion-)
     - [▶ Let's see if you can guess this?](#-lets-see-if-you-can-guess-this)
   - [Section: Appearances are deceptive!](#section-appearances-are-deceptive)
     - [▶ Skipping lines?](#-skipping-lines)
-    - [▶ Teleportation *](#-teleportation-)
+    - [▶ Teleportation](#-teleportation-)
     - [▶ Well, something is fishy...](#-well-something-is-fishy)
   - [Section: Watch out for the landmines!](#section-watch-out-for-the-landmines)
     - [▶ Modifying a dictionary while iterating over it](#-modifying-a-dictionary-while-iterating-over-it)
-    - [▶ Stubborn `del` operator *](#-stubborn-del-operator-)
+    - [▶ Stubborn `del` operator](#-stubborn-del-operator-)
     - [▶ Deleting a list item while iterating](#-deleting-a-list-item-while-iterating)
     - [▶ Loop variables leaking out!](#-loop-variables-leaking-out)
     - [▶ Beware of default mutable arguments!](#-beware-of-default-mutable-arguments)
@@ -73,8 +73,8 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
     - [▶ Name resolution ignoring class scope](#-name-resolution-ignoring-class-scope)
     - [▶ Needle in a Haystack](#-needle-in-a-haystack)
   - [섹션: 파이썬의 숨겨진 보물들!](#섹션-파이썬의-숨겨진-보물들)
-    - [▶ 파이썬과 함께 나는 방법? *](#-파이썬과-함께-나는-방법)
-    - [▶ 파이썬에 `goto`문이 있다고? *](#-파이썬에-goto문이-있다고-)
+    - [▶ 파이썬과 함께 나는 방법?](#-파이썬과-함께-나는-방법)
+    - [▶ 파이썬에 `goto`문이 있다고?](#-파이썬에-goto문이-있다고-)
     - [▶ Brace yourself! *](#-brace-yourself-)
     - [▶ Let's meet Friendly Language Uncle For Life *](#-lets-meet-friendly-language-uncle-for-life-)
     - [▶ Even Python understands that love is complicated *](#-even-python-understands-that-love-is-complicated-)
@@ -160,7 +160,7 @@ $ pip install wtfpython -U
 
 ## 섹션: 머리가 아플 수도 있어요!
 
-### ▶ 알쏭달쏭 문자열 *
+### ▶ 알쏭달쏭 문자열
 <!-- Example ID: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --->
 1\.
 ```py
@@ -216,20 +216,20 @@ False
 >>> 'a'.split()
 ['a']
 
-# is same as
+# 위랑 같은 결과죠?
 >>> 'a'.split(' ')
 ['a']
 
-# but
+# 근데 길이를 보면..
 >>> len(''.split())
 0
 
-# isn't the same as
+# 서로 다르네요?
 >>> len(''.split(' '))
 1
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 - It might appear at first that the default seperator for split is a single space `' '`, but as per the [docs](https://docs.python.org/2.7/library/stdtypes.html#str.split),
     > If sep is not specified or is None, a different splitting algorithm is applied: runs of consecutive whitespace are regarded as a single separator, and the result will contain no empty strings at the start or end if the string has leading or trailing whitespace. Consequently, splitting an empty string or a string consisting of just whitespace with a None separator returns `[]`.
     > If sep is given, consecutive delimiters are not grouped together and are deemed to delimit empty strings (for example, `'1,,2'.split(',')` returns `['1', '', '2']`). Splitting an empty string with a specified separator returns `['']`.
@@ -276,7 +276,7 @@ complex
 So, why is Python all over the place?
 
 
-#### 💡 Explanation
+#### 💡 설명
 
 * Python dictionaries check for equality and compare the hash value to determine if two keys are the same.
 * Immutable objects with same value always have the same hash in Python.
@@ -352,7 +352,7 @@ TypeError: unhashable type: 'dict'
 
 What is going on here?
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 - The reason why intransitive equality didn't hold among `dictionary`, `ordered_dict` and `another_ordered_dict` is because of the way `__eq__` method is implemented in `OrderedDict` class. From the [docs](https://docs.python.org/3/library/collections.html#ordereddict-objects)
     > Equality tests between OrderedDict objects are order-sensitive and are implemented as `list(od1.items())==list(od2.items())`. Equality tests between `OrderedDict` objects and other Mapping objects are order-insensitive like regular dictionaries.
@@ -442,7 +442,7 @@ Iteration 0
 
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 - When a `return`, `break` or `continue` statement is executed in the `try` suite of a "try…finally" statement, the `finally` clause is also executed ‘on the way out.
 - The return value of a function is determined by the last `return` statement executed. Since the `finally` clause always executes, a `return` statement executed in the `finally` clause will always be the last one executed.
@@ -469,7 +469,7 @@ True
 True
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * When `id` was called, Python created a `WTF` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
 * When we do this twice in succession, Python allocates the same memory location to this second object as well. Since (in CPython) `id` uses the memory location as the object id, the id of the two objects is the same.
@@ -515,7 +515,7 @@ for i, some_dict[i] in enumerate(some_string):
 {0: 'w', 1: 't', 2: 'f'}
 ```
 
-####  💡 Explanation:
+####  💡 설명:
 
 * A `for` statement is defined in the [Python grammar](https://docs.python.org/3/reference/grammar.html) as:
   ```
@@ -539,7 +539,7 @@ for i, some_dict[i] in enumerate(some_string):
 
   Did you expect the loop to run just once?
 
-  **💡 Explanation:**
+  **💡 설명:**
 
   - The assignment statement `i = 10` never affects the iterations of the loop because of the way for loops work in Python. Before the beginning of every iteration, the next item provided by the iterator (`range(4)` this case) is unpacked and assigned the target list variables (`i` in this case).
 
@@ -606,7 +606,7 @@ array_4 = [400, 500, 600]
 [401, 501, 601, 402, 502, 602, 403, 503, 603]
 ```
 
-#### 💡 Explanation
+#### 💡 설명
 
 - In a [generator](https://wiki.python.org/moin/Generators) expression, the `in` clause is evaluated at declaration time, but the conditional clause is evaluated at runtime.
 - So before runtime, `array` is re-assigned to the list `[2, 8, 22]`, and since out of `1`, `8` and `15`, only the count of `8` is greater than `0`, the generator only yields `8`.
@@ -671,7 +671,7 @@ False
 True
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 **The difference between `is` and `==`**
 
@@ -761,7 +761,7 @@ board = [row]*3
 
 We didn't assign 3 "X"s or did we?
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 When we initialize `row` variable, this visualization explains what happens in the memory
 
@@ -813,7 +813,7 @@ Even when the values of `x` were different in every iteration prior to appending
 [512, 512, 512, 512, 512, 512, 512, 512, 512, 512]
 ```
 
-#### 💡 Explanation
+#### 💡 설명
 
 - When defining a function inside a loop that uses the loop variable in its body, the loop function's closure is bound to the variable, not its value. So all of the functions use the latest value assigned to the variable for computation.
 
@@ -872,7 +872,7 @@ False
 ```
 
 
-#### 💡 Explanation
+#### 💡 설명
 
 - `type` is a [metaclass](https://realpython.com/python-metaclasses/) in Python.
 - **Everything** is an `object` in Python, which includes classes as well as their objects (instances).
@@ -893,7 +893,7 @@ True
 False
 ```
 
-#### 💡 Explanation
+#### 💡 설명
 
 - `is not` is a single binary operator, and has behavior different than using `is` and `not` separated.
 - `is not` evaluates to `False` if the variables on either side of the operator point to the same object and `True` otherwise.
@@ -922,7 +922,7 @@ SyntaxError: invalid syntax
 SyntaxError: invalid syntax
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 - Trailing comma is not always legal in formal parameters list of a Python function.
 -  In Python, the argument list is defined partially with leading commas and partially with trailing commas. This conflict causes situations where a comma is trapped in the middle, and no rule accepts it.
@@ -950,7 +950,7 @@ SyntaxError: EOL while scanning string literal
 True
 ```
 
-#### 💡 Explanation
+#### 💡 설명
 
 - In a normal python string, the backslash is used to escape characters that may have special meaning (like single-quote, double-quote and the backslash itself).
     ```py
@@ -991,7 +991,7 @@ True
 SyntaxError: invalid syntax
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * Operator precedence affects how an expression is evaluated, and `==` operator has higher precedence than `not` operator in Python.
 * So `not x == y` is equivalent to `not (x == y)` which is equivalent to `not (True == False)` finally evaluating to `True`.
@@ -1013,7 +1013,7 @@ wtfpython
 >>> # print("""wtfpython")
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 + Python supports implicit [string literal concatenation](https://docs.python.org/2/reference/lexical_analysis.html#string-literal-concatenation), Example,
   ```
   >>> print("wtf" "python")
@@ -1049,7 +1049,7 @@ if noon_time:
 ```
 The midnight time is not printed.
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 Before Python 3.5, the boolean value for `datetime.time` object was considered to be `False` if it represented midnight in UTC. It is error-prone when using the `if obj:` syntax to check if the `obj` is null or some equivalent of "empty."
 
@@ -1091,7 +1091,7 @@ for item in mixed_list:
 ''
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * `bool` is a subclass of `int` in Python
     ```py
@@ -1183,7 +1183,7 @@ True
 True
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * Class variables and variables in class instances are internally handled as dictionaries of a class object. If a variable name is not found in the dictionary of the current class, the parent classes are searched for it.
 * The `+=` operator modifies the mutable object in-place without creating a new object. So changing the attribute of one instance affects the other instances and the class attribute as well.
@@ -1213,7 +1213,7 @@ def some_func(val):
 ['a', 'something', 'b', 'something']
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 - Source and explanation can be found here: https://stackoverflow.com/questions/32139885/yield-in-list-comprehensions-and-generator-expressions
 - Related bug report: http://bugs.python.org/issue10544
 
@@ -1241,7 +1241,7 @@ TypeError: 'tuple' object does not support item assignment
 
 But I thought tuples were immutable...
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * Quoting from https://docs.python.org/2/reference/datamodel.html
 
@@ -1274,7 +1274,7 @@ except Exception as e:
 NameError: name 'e' is not defined
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * Source: https://docs.python.org/3/reference/compound_stmts.html#except
 
@@ -1345,7 +1345,7 @@ if True == False:
 I've lost faith in truth!
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 - Initially, Python used to have no `bool` type (people used 0 for false and non-zero value like 1 for true). Then they added `True`, `False`, and a `bool` type, but, for backward compatibility, they couldn't make `True` and `False` constants- they just were built-in variables.
 - Python 3 was backward-incompatible, so it was now finally possible to fix that, and so this example won't work with Python 3.x!
@@ -1370,7 +1370,7 @@ I've lost faith in truth!
 ```
 Where did element `3` go from the `numbers` list?
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 - From Python [docs](https://docs.python.org/3.3/library/functions.html#zip), here's an approximate implementation of zip function,
     ```py
@@ -1423,7 +1423,7 @@ None
 None
 ```
 
-#### 💡 Explanation
+#### 💡 설명
 
 Most methods that modify the items of sequence/mapping objects like `list.append`, `dict.update`, `list.sort`, etc. modify the objects in-place and return `None`. The rationale behind this is to improve performance by avoiding making a copy of the object if the operation can be done in-place (Referred from [here](http://docs.python.org/2/faq/design.html#why-doesn-t-list-sort-return-the-sorted-list))
 
@@ -1444,7 +1444,7 @@ False
 
 The Subclass relationships were expected to be transitive, right? (i.e., if `A` is a subclass of `B`, and `B` is a subclass of `C`, the `A` _should_ a subclass of `C`)
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * Subclass relationships are not necessarily transitive in Python. Anyone is allowed to define their own, arbitrary `__subclasscheck__` in a metaclass.
 * When `issubclass(cls, Hashable)` is called, it simply looks for non-Falsey "`__hash__`" method in `cls` or anything it inherits from.
@@ -1474,7 +1474,7 @@ str
 str
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * Both the object `s` and the string `"s"` hash to the same value because `SomeClass` inherits the `__hash__` method of `str` class.
 * `SomeClass("s") == "s"` evaluates to `True` because `SomeClass` also inherits `__eq__` method from `str` class.
@@ -1521,7 +1521,7 @@ a, b = a[b] = {}, 5
 {5: ({...}, 5)}
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * According to [Python language reference](https://docs.python.org/2/reference/simple_stmts.html#assignment-statements), assignment statements have the form
   ```
@@ -1584,7 +1584,7 @@ Wut?
 
 **Note:** The easiest way to reproduce this is to simply copy the statements from the above snippet and paste them into your file/shell.
 
-#### 💡 Explanation
+#### 💡 설명
 
 Some non-Western characters look identical to letters in the English alphabet but are considered distinct by the interpreter.
 
@@ -1629,7 +1629,7 @@ def energy_receive():
 
 Where's the Nobel Prize?
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * Notice that the numpy array created in the `energy_send` function is not returned, so that memory space is free to reallocate.
 * `numpy.empty()` returns the next free memory slot without reinitializing it. This memory spot just happens to be the same one that was just freed (usually, but not always).
@@ -1660,7 +1660,7 @@ Shouldn't that be 100?
 
 **Note:** If you're not able to reproduce this, try running the file [mixed_tabs_and_spaces.py](/mixed_tabs_and_spaces.py) via the shell.
 
-#### 💡 Explanation
+#### 💡 설명
 
 * **Don't mix tabs and spaces!** The character just preceding return is a "tab",  and the code is indented by multiple of "4 spaces" elsewhere in the example.
 * This is how Python handles tabs:
@@ -1707,7 +1707,7 @@ for i in x:
 
 Yes, it runs for exactly **eight** times and stops.
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * Iteration over a dictionary that you edit at the same time is not supported.
 * It runs eight times because that's the point at which the dictionary resizes to hold more keys (we have eight deletion entries, so a resize is needed). This is actually an implementation detail.
@@ -1751,7 +1751,7 @@ Deleted!
 
 Okay, now it's deleted :confused:
 
-#### 💡 Explanation:
+#### 💡 설명:
 + `del x` doesn’t directly call `x.__del__()`.
 + Whenever `del x` is encountered, Python decrements the reference count for `x` by one, and `x.__del__()` when x’s reference count reaches zero.
 + In the second output snippet, `y.__del__()` was not called because the previous statement (`>>> y`) in the interactive interpreter created another reference to the same object, thus preventing the reference count to reach zero when `del y` was encountered.
@@ -1794,7 +1794,7 @@ for idx, item in enumerate(list_4):
 
 Can you guess why the output is `[2, 4]`?
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * It's never a good idea to change the object you're iterating over. The correct way to do so is to iterate over a copy of the object instead, and `list_3[:]` does just that.
 
@@ -1873,7 +1873,7 @@ print(x, ': x in global')
 1 : x in global
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 - In Python, for-loops use the scope they exist in and leave their defined loop-variable behind. This also applies if we explicitly defined the for-loop variable in the global namespace before. In this case, it will rebind the existing variable.
 
@@ -1903,7 +1903,7 @@ def some_func(default_arg=[]):
 ['some_string', 'some_string', 'some_string']
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 - The default mutable arguments of functions in Python aren't really initialized every time you call the function. Instead, the recently assigned value to them is used as the default value. When we explicitly passed `[]` to `some_func` as the argument, the default value of the `default_arg` variable was not used, so the function returned as expected.
 
@@ -1972,7 +1972,7 @@ ValueError: list.remove(x): x not in list
 SyntaxError: invalid syntax
 ```
 
-#### 💡 Explanation
+#### 💡 설명
 
 * To add multiple Exceptions to the except clause, you need to pass them as parenthesized tuple as the first argument. The second argument is an optional name, which when supplied will bind the Exception instance that has been raised. Example,
   ```py
@@ -2047,7 +2047,7 @@ a += [5, 6, 7, 8]
 [1, 2, 3, 4, 5, 6, 7, 8]
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 *  `a += b` doesn't always behave the same way as `a = a + b`.  Classes *may* implement the *`op=`* operators differently, and lists do this.
 
@@ -2077,7 +2077,7 @@ def another_func():
 UnboundLocalError: local variable 'a' referenced before assignment
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 * When you make an assignment to a variable in scope, it becomes local to that scope. So `a` becomes local to the scope of `another_func`,  but it has not been initialized previously in the same scope which throws an error.
 * Read [this](http://sebastianraschka.com/Articles/2014_python_scope_and_namespaces.html) short but an awesome guide to learn more about how namespaces and scope resolution works in Python.
 * To modify the outer scope variable `a` in `another_func`, use `global` keyword.
@@ -2119,7 +2119,7 @@ False
 False
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 As per https://docs.python.org/2/reference/expressions.html#not-in
 
@@ -2177,7 +2177,7 @@ class SomeClass:
 5
 ```
 
-#### 💡 Explanation
+#### 💡 설명
 - Scopes nested inside class definition ignore names bound at the class level.
 - A generator expression has its own scope.
 - Starting from Python 3.X, list comprehensions also have their own scope.
@@ -2261,7 +2261,7 @@ b = "javascript"
 # No AssertionError is raised
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 * For 1, the correct statement for expected behavior is `x, y = (0, 1) if True else (None, None)`.
 * For 2, the correct statement for expected behavior is `t = ('one',)` or `t = 'one',` (missing comma) otherwise the interpreter considers `t` to be a `str` and iterates over it character by character.
 * `()` is a special token and denotes empty `tuple`.
@@ -2315,7 +2315,7 @@ Traceback (most recent call last):
 NameError: name '_another_weird_name_func' is not defined
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 - It if often adivsable to not use wildcard imports. The first obvious reason for this is In wildcard imports, the names with leading underscore are be imported. This may lead to errors in runtime.
 - Had we used `from ... import a, b, c` syntax, the above `NameError` won't have occurred.
@@ -2371,7 +2371,7 @@ import antigravity
 
 ---
 
-### ▶ 파이썬에 `goto`문이 있다고? *
+### ▶ 파이썬에 `goto`문이 있다고?
 <!-- Example ID: 2aff961e-7fa5-4986-a18a-9e5894bd89fe --->
 ```py
 from goto import goto, label
@@ -2416,7 +2416,7 @@ SyntaxError: not a chance
 
 Braces? No way! If you think that's disappointing, use Java. Okay, another surprising thing, can you find where's the `SyntaxError` raised in `__future__` module [code](https://github.com/python/cpython/blob/master/Lib/__future__.py)?
 
-#### 💡 Explanation:
+#### 💡 설명:
 + The `__future__` module is normally used to provide features from future versions of Python. The "future" in this specific context is however ironic.
 + This is an easter egg concerned with the community's feelings on this issue.
 + The code is actually present [here](https://github.com/python/cpython/blob/025eb98dc0c1dc27404df6c544fc2944e0fa9f3a/Python/future.c#L49) in `future.c` file.
@@ -2441,7 +2441,7 @@ True
 
 There we go.
 
-#### 💡 Explanation:
+#### 💡 설명:
 - This is relevant to [PEP-401](https://www.python.org/dev/peps/pep-0401/) released on April 1, 2009 (now you know, what it means).
 - Quoting from the PEP-401
 
@@ -2504,7 +2504,7 @@ True
 True
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * `this` module in Python is an easter egg for The Zen Of Python ([PEP 20](https://www.python.org/dev/peps/pep-0020)).
 * And if you think that's already interesting enough, check out the implementation of [this.py](https://hg.python.org/cpython/file/c3896275c0f6/Lib/this.py). Interestingly, the code for the Zen violates itself (and that's probably the only place where this happens).
@@ -2551,7 +2551,7 @@ else:
 Try block executed successfully...
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 - The `else` clause after a loop is executed only when there's no explicit `break` after all the iterations.
 - `else` clause after try block is also called "completion clause" as reaching the `else` clause in a `try` statement means that the try block actually completed successfully.
 
@@ -2577,7 +2577,7 @@ NameError: name 'SomeRandomString' is not defined
 Ellipsis
 ```
 
-#### 💡 Explanation
+#### 💡 설명
 - In Python, `Ellipsis` is a globally available builtin object which is equivalent to `...`.
     ```py
     >>> ...
@@ -2629,7 +2629,7 @@ The spelling is intended. Please, don't submit a patch for this.
 -314159
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 - Hash of infinity is 10⁵ x π.
 - Interestingly, the hash of `float('-inf')` is "-10⁵ x π" in Python 3, whereas "-10⁵ x e" in Python 2.
 
@@ -2704,7 +2704,7 @@ AttributeError: 'A' object has no attribute '__variable'
 ```
 
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 * [Name Mangling](https://en.wikipedia.org/wiki/Name_mangling) is used to avoid naming collisions between different namespaces.
 * In Python, the interpreter modifies (mangles) the class member names starting with `__` (double underscore a.k.a "dunder") and not ending with more than one trailing underscore by adding `_NameOfTheClass` in front.
@@ -2734,7 +2734,7 @@ AttributeError: 'A' object has no attribute '__variable'
 0.012188911437988281
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 + `+=` is faster than `+` for concatenating more than two strings because the first string (example, `s1` for `s1 += s2 + s3`) is not destroyed while calculating the complete string.
 
 ---
@@ -2809,7 +2809,7 @@ Let's increase the number of iterations by a factor of 10.
 86.3 µs ± 2 µs per loop (mean ± std. dev. of 7 runs, 1000 loops each)
 ```
 
-#### 💡 Explanation
+#### 💡 설명
 - You can read more about [timeit](https://docs.python.org/3/library/timeit.html) or [%timeit](https://ipython.org/ipython-doc/dev/interactive/magics.html#magic-timeit) on these links. They are used to measure the execution time of code pieces.
 - Don't use `+` for generating long strings — In Python, `str` is immutable, so the left and right strings have to be copied into the new string for every pair of concatenations. If you concatenate four strings of length 10, you'll be copying (10+10) + ((10+10)+10) + (((10+10)+10)+10) = 90 characters instead of just 40 characters. Things get quadratically worse as the number and size of the string increases (justified with the execution times of `add_bytes_with_plus` function)
 - Therefore, it's advised to use `.format.` or `%` syntax (however, they are slightly slower than `+` for very short strings).
@@ -2865,7 +2865,7 @@ nan
 nan
 ```
 
-#### 💡 Explanation:
+#### 💡 설명:
 
 `'inf'` and `'nan'` are special strings (case-insensitive), which when explicitly typecasted to `float` type, are used to represent mathematical "infinity" and "not a number" respectively.
 
@@ -2875,7 +2875,7 @@ nan
 <!-- Example ID: f885cb82-f1e4-4daa-9ff3-972b14cb1324 --->
 * `join()` is a string operation instead of list operation. (sort of counter-intuitive at first usage)
 
-  **💡 Explanation:**
+  **💡 설명:**
   If `join()` is a method on a string then it can operate on any iterable (list, tuple, iterators). If it were a method on a list, it'd have to be implemented separately by every type. Also, it doesn't make much sense to put a string-specific method on a generic `list` object API.
 
 * Few weird looking but semantically correct statements:
@@ -2894,7 +2894,7 @@ nan
   5
   ```
 
-  **💡 Explanation:**
+  **💡 설명:**
   + There is no `++` operator in Python grammar. It is actually two `+` operators.
   + `++a` parses as `+(+a)` which translates to `a`. Similarly, the output of the statement `--a` can be justified.
   + This StackOverflow [thread](https://stackoverflow.com/questions/3654830/why-are-there-no-and-operators-in-python) discusses the rationale behind the absence of increment and decrement operators in Python.
