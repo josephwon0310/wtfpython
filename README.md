@@ -2,7 +2,7 @@
 <h1 align="center">What the f*ck Python! 🐍</h1>
 <p align="center">놀라운 파이썬 코드 예제들과 생소한 기능들.</p>
 <p align="center">이 문서는 현재 번역이 진행 중인 미완성 문서입니다.</p>
-진행중인 번역본은 `3.0--korean` 브랜치를 확인해주세요.
+<p align="center">진행중인 번역본은 `3.0--korean` 브랜치를 확인해주세요.</p>
 
 <p align="center">
 <a href="https://github.com/satwikkansal/wtfpython">English</a>
