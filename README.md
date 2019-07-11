@@ -33,7 +33,7 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
   - [섹션: 머리가 아플 수도 있어요!](#섹션-머리가-아플-수도-있어요)
     - [▶ 알쏭달쏭 문자열](#-알쏭달쏭-문자열-)
     - [▶ 스플릿스플릿!](#-스플릿스플릿-)
-    - [▶ Time for some hash brownies!](#-time-for-some-hash-brownies)
+    - [▶ 파이썬의 예외처리](#-파이썬의-예외처리)
     - [▶ Return return everywhere!](#-return-return-everywhere)
     - [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same-)
     - [▶ For what?](#-for-what)
@@ -259,7 +259,7 @@ some_dict[5.0] = "JavaScript"
 some_dict[5] = "Python"
 ```
 
-**Output:**
+**결과:**
 ```py
 >>> some_dict[5.5]
 "Ruby"
@@ -392,7 +392,7 @@ What is going on here?
 
 ---
 
-### ▶ Keep trying?
+### ▶ 파이썬의 예외처리
 <!-- Example ID: b4349443-e89f-4d25-a109-82616be9d41a --->
 ```py
 def some_func():
@@ -408,13 +408,13 @@ def another_func():
         finally:
             print("Finally!")
 
-def one_more_func(): # A gotcha!
+def one_more_func(): # 아마 맞추기 어려울겁니다!
     try:
         for i in range(3):
             try:
                 1 / i
             except ZeroDivisionError:
-                # Let's throw it here and handle it outside for loop
+                # raise 후, 루프 밖에서 예외처리
                 raise ZeroDivisionError("A trivial divide by zero error")
             finally:
                 print("Iteration", i)
@@ -423,7 +423,7 @@ def one_more_func(): # A gotcha!
         print("Zero division error ocurred", e)
 ```
 
-**Output:**
+**결과:**
 
 ```py
 >>> some_func()
@@ -446,9 +446,9 @@ Iteration 0
 
 #### 💡 설명:
 
-- When a `return`, `break` or `continue` statement is executed in the `try` suite of a "try…finally" statement, the `finally` clause is also executed ‘on the way out.
-- The return value of a function is determined by the last `return` statement executed. Since the `finally` clause always executes, a `return` statement executed in the `finally` clause will always be the last one executed.
-- The caveat here is, if the finally clause executes a `return` or `break` statement, the temporarily saved exception is discarded.
+- `return`, `break` 혹은 `continue` 가 파이썬의 `try`...`finally` 안에서 실행될 경우, `try` 블럭 안의 코드가 실행된 후 `finally` 블럭 역시 항상 실행됩니다.
+- 함수의 리턴값은 항상 마지막에 실행된 `return` 문이 리턴하는 값인데, `finally` 문은 항상 호출되는 코드 블럭이기에 항상 `finally` 문에 속한 `return` 이 항상 마지막에 실행됩니다.
+- 세번째 예제의 경우 좀 의아할 수 있습니다. 조심해야 할 점은, 만약 `finally` 블럭 안에서 `return` 혹은 `break` 문이 사용될 경우, 기존에 저장되있던 예외처리는 버려집니다.
 
 ---
 
