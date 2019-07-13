@@ -33,6 +33,8 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
   - [섹션: 머리가 아플 수도 있어요!](#섹션-머리가-아플-수도-있어요)
     - [▶ 알쏭달쏭 문자열](#-알쏭달쏭-문자열-)
     - [▶ 스플릿스플릿!](#-스플릿스플릿-)
+    - [▶ 파이썬의 해쉬 함수](#-파이썬의-해쉬-함수)
+    - [▶ 딕셔너리에도 순서가 있다니](#-딕셔너리에도-순서가-있다니)
     - [▶ 파이썬의 예외처리](#-파이썬의-예외처리)
     - [▶ Return return everywhere!](#-return-return-everywhere)
     - [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same-)
@@ -161,7 +163,7 @@ $ pip install wtfpython -U
 
 ## 섹션: 머리가 아플 수도 있어요!
 
-### ▶ 알쏭달쏭 문자열
+### ▶ 알쏭달쏭 문자열 
 <!-- Example ID: 30f1d3fc-e267-4b30-84ef-4d9e7091ac1a --->
 1\.
 ```py
@@ -249,7 +251,7 @@ False
 
 
 
-### ▶ Time for some hash brownies!
+### ▶ 파이썬의 해쉬 함수
 <!-- Example ID: eb17db53-49fd-4b61-85d6-345c5ca213ff --->
 1\.
 ```py
@@ -265,7 +267,7 @@ some_dict[5] = "Python"
 "Ruby"
 >>> some_dict[5.0]
 "Python"
->>> some_dict[5] # "Python" destroyed the existence of "JavaScript"?
+>>> some_dict[5] # "Python"이 "JavaScript"를 삭제?
 "Python"
 
 >>> complex_five = 5 + 0j
@@ -275,26 +277,26 @@ complex
 "Python"
 ```
 
-So, why is Python all over the place?
+그래서 파이썬이 어떻게 `some_dict`를 삼켜버린거죠?
 
 
 #### 💡 설명
 
-* Python dictionaries check for equality and compare the hash value to determine if two keys are the same.
-* Immutable objects with same value always have the same hash in Python.
+* 파이썬 딕셔너리는 두 개의 키 값 비교를 위해 객체의 해쉬 값을 확인합니다.
+* 파이썬에서 같은 값을 가진 불변객체는 항상 같은 해쉬 값을 가집니다.
   ```py
   >>> 5 == 5.0 == 5 + 0j
   True
   >>> hash(5) == hash(5.0) == hash(5 + 0j)
   True
   ```
-  **Note:** Objects with different values may also have same hash (known as hash collision).
-* When the statement `some_dict[5] = "Python"` is executed, the existing value "JavaScript" is overwritten with "Python" because Python recognizes `5` and `5.0` as the same keys of the dictionary `some_dict`.
-* This StackOverflow [answer](https://stackoverflow.com/a/32211042/4354153) explains beautifully the rationale behind it.
+  **참조:** 다른 값을 가진 두 객체가 같은 해쉬 값을 가질 수 있습니다(해쉬 충돌이라고 하죠).
+* 예제의 `some_dict[5] = "Python"` 가 실행될 때, 기존에 있던 `"JavaScript"` 는 `"Python"` 에 의해 덮어 씌워집니다. 이는 파이썬이 불변객체인 `5` 와 `5.0` 를 `some_dict` 의 동일한 키로 보기때문입니다.
+* 파이썬 해쉬 함수의 이러한 구현 방식에 대해 더 궁금증이 있다면, 이 스택오버플로우 [링크](https://stackoverflow.com/a/32211042/4354153)를 확인하세요!
 
 ---
 
-### ▶ The disorder within order
+### ▶ 딕셔너리에도 순서가 있다니
 <!-- Example ID: 91bff1f8-541d-455a-9de4-6cd8ff00ea66 --->
 ```py
 from collections import OrderedDict
@@ -310,65 +312,67 @@ another_ordered_dict[2] = 'b'; another_ordered_dict[1] = 'a';
 
 class DictWithHash(dict):
     """
-    A dict that also implements __hash__ magic.
+     __hash__ 를 구현한 클래스.
     """
     __hash__ = lambda self: 0
 
 class OrderedDictWithHash(OrderedDict):
     """
-    A dict that also implements __hash__ magic.
+    __hash__ 를 구현한 클래스.
     """
     __hash__ = lambda self: 0
 ```
 
-**Output**
+**결과**
 ```py
->>> dictionary == ordered_dict # If a == b
+>>> dictionary == ordered_dict # 만약 a가 b고
 True
->>> dictionary == another_ordered_dict # and b == c
+>>> dictionary == another_ordered_dict # b가 c라면
 True
->>> ordered_dict == another_ordered_dict # the why isn't c == a ??
+>>> ordered_dict == another_ordered_dict # c는 a가.. 아니네요? 파이썬이 삼단논법을 파괴..?
 False
 
-# We all know that a set consists of only unique elements,
-# let's try making a set of these dictionaries and see what happens...
+# Set은 중복된 값은 저장하지 않는거 아시죠?
+# 위의 딕셔너리를 전부 다 Set에 넣어 봅시다...
 
 >>> len({dictionary, ordered_dict, another_ordered_dict})
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: unhashable type: 'dict'
 
-# Makes sense since dict don't have __hash__ implemented, let's use
-# our wrapper classes.
+# `dict`타입은 __hash__ 함수 구현이 안되있네요, 그렇다면
+# 직접 해쉬함수를 구현한 클래스를 사용해봅시다.
 >>> dictionary = DictWithHash()
 >>> dictionary[1] = 'a'; dictionary[2] = 'b';
 >>> ordered_dict = OrderedDictWithHash()
 >>> ordered_dict[1] = 'a'; ordered_dict[2] = 'b';
 >>> another_ordered_dict = OrderedDictWithHash()
 >>> another_ordered_dict[2] = 'b'; another_ordered_dict[1] = 'a';
->>> len({dictionary, ordered_dict, another_ordered_dict})
+>>> len({dictionary, ordered_dict, another_ordered_dict}) # 아! 결국 다 같군요?
 1
->>> len({ordered_dict, another_ordered_dict, dictionary}) # changing the order
+>>> len({ordered_dict, another_ordered_dict, dictionary}) # 그러나 순서를 바꾸면...?
 2
 ```
 
-What is going on here?
+도대체 이게 무슨 일이죠?
 
 #### 💡 설명:
 
-- The reason why intransitive equality didn't hold among `dictionary`, `ordered_dict` and `another_ordered_dict` is because of the way `__eq__` method is implemented in `OrderedDict` class. From the [docs](https://docs.python.org/3/library/collections.html#ordereddict-objects)
+- 단순한 `==` 가 `dictionary`, `ordered_dict` 와 `another_ordered_dict` 를 비교하는데 불규칙적인 결과를 낸 이유는 바로  `OrderedDict` 클래스의 `__eq__` 구현 방식 때문입니다. 파이썬의 [공식 문서](https://docs.python.org/3/library/collections.html#ordereddict-objects)를 참조해 보면,
     > Equality tests between OrderedDict objects are order-sensitive and are implemented as `list(od1.items())==list(od2.items())`. Equality tests between `OrderedDict` objects and other Mapping objects are order-insensitive like regular dictionaries.
-- The reason for this equality is behavior  is that it allows `OrderedDict` objects to be directly substituted anywhere a regular dictionary is used.
-- Okay, so why did changing the order affect the lenght of the generated `set` object? The answer is the lack of intransitive equality only. Since sets are "unordered" collections of unique elements, the order in which elements are inserted shouldn't matter. But in this case, it does matter. Let's break it down a bit,
+
+    > 해석: `OrderedDict` 클래스간의 비교 연산은 객체의 순서 역시 비교하며, `list(od1.items())==list(od2.items())` 와 같이 구현되어 있습니다. `OrderedDict` 객체와 다른 맵핑 객체의 비교 연산은 일반 딕셔너리와 같이 순서를 고려하지 않습니다.
+- 이유는 간단합니다. `OrderedDict` 객체가 일반 딕셔너리와의 연산을 실행할때 직접적인 호환성을 위해서입니다.
+- 그렇다면 마지막 예제의 `set` 객체의 길이가 바뀐건 왜일까요? 이는 a는 b, b는 c, 그렇다면 c는 a!와 같은 비교 방식이 이 경우에 부적합하기 때문입니다. `set` 은 객체의 삽입 순서나 중복 값을 중요시 여기지 않습니다. 이 경우에는 좀 다른 것이 문제죠... 좀 더 깊이 들어가봅시다!
     ```py
     >>> some_set = set()
-    >>> some_set.add(dictionary) # these are the mapping objects from the snippets above
+    >>> some_set.add(dictionary) # 이전 예제와 모두 동일한 객체들입니다.
     >>> ordered_dict in some_set
     True
     >>> some_set.add(ordered_dict)
     >>> len(some_set)
     1
-    >>> another_ordered_dict in some_set
+    >>> another_ordered_dict in some_set # 같은 값이네요?
     True
     >>> some_set.add(another_ordered_dict)
     >>> len(some_set)
@@ -387,9 +391,7 @@ What is going on here?
     >>> len(another_set)
     2
     ```
-    So the inconsistency is due to `another_ordered_dict in another_set` being False because `ordered_dict` was already present in `another_set` and as observed before, `ordered_dict == another_ordered_dict` is `False`.
-
-
+    `another_ordered_dict in another_set` 가 `False` 를 리턴하는 이유는 `ordered_dict` 가 `another_set` 에 이미 존재하기 때문입니다. 그리고 예제에서 보았듯이, 순서가 다른 두 `OrderedDict` 의 비교는 `ordered_dict == another_ordered_dict` 처럼 `False` 를 리턴합니다.
 ---
 
 ### ▶ 파이썬의 예외처리
