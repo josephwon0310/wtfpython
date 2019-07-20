@@ -37,7 +37,7 @@ PS: 이 문서를 이미 읽던중이었으면, 수정된 부분은 [여기](htt
     - [▶ 딕셔너리에도 순서가 있다니](#-딕셔너리에도-순서가-있다니)
     - [▶ 파이썬의 예외처리](#-파이썬의-예외처리)
     - [▶ Return return everywhere!](#-return-return-everywhere)
-    - [▶ Deep down, we're all the same.](#-deep-down-were-all-the-same-)
+    - [▶ 우리는 사실 다 똑같아요](#-우리는-사실-다-똑같아요)
     - [▶ For what?](#-for-what)
     - [▶ Evaluation time discrepancy](#-evaluation-time-discrepancy)
     - [▶ `is` is not what it is!](#-is-is-not-what-it-is)
@@ -454,20 +454,20 @@ Iteration 0
 
 ---
 
-### ▶ Deep down, we're all the same
+### ▶ 우리는 사실 다 똑같아요
 <!-- Example ID: 8f99a35f-1736-43e2-920d-3b78ec35da9b --->
 ```py
 class WTF:
   pass
 ```
 
-**Output:**
+**결과:**
 ```py
->>> WTF() == WTF() # two different instances can't be equal
+>>> WTF() == WTF() # 서로 다른 두 인스턴스는 같을리가 없죠
 False
->>> WTF() is WTF() # identities are also different
+>>> WTF() is WTF() # 아이디 역시 다른 객체네요
 False
->>> hash(WTF()) == hash(WTF()) # hashes _should_ be different as well
+>>> hash(WTF()) == hash(WTF()) # 해쉬도 달라야겠죠?
 True
 >>> id(WTF()) == id(WTF())
 True
@@ -475,17 +475,17 @@ True
 
 #### 💡 설명:
 
-* When `id` was called, Python created a `WTF` class object and passed it to the `id` function. The `id` function takes its `id` (its memory location), and throws away the object. The object is destroyed.
-* When we do this twice in succession, Python allocates the same memory location to this second object as well. Since (in CPython) `id` uses the memory location as the object id, the id of the two objects is the same.
-* So, object's id is unique only for the lifetime of the object. After the object is destroyed, or before it is created, something else can have the same id.
-* But why did the `is` operator evaluated to `False`? Let's see with this snippet.
+* `id` 함수 호출 시, 파이썬은 `WTF` 객체를 만든 후 `id` 함수에 넘깁니다. `id` 함수는 객체의 `id` (its memory location)를 받고, 객체 그 자체는 버려집니다. 삭제된다는거죠.
+* 연속으로 실행될시에 파이썬은 두번째 객체 역시 같은 메모리 장소를 할당합니다. `id` 함수는 메모리 장소를 객체의 식별자로 사용하기에, 같은 아이디값을 갖습니다(CPython 구현).
+* 즉, 객체의 고유 아이디는 객체가 아직 살아있는 기간만 유효합니다. 객체가 사라진 후, 혹은 생성 전에는 다른 무언가가 같은 아이디 값을 갖을 수 있습니다.
+* 그렇다면 예제의 `is` 는 어째서 `False` 일까요? 아래 예제를 봅시다.
   ```py
   class WTF(object):
     def __init__(self): print("I")
     def __del__(self): print("D")
   ```
 
-  **Output:**
+  **결과:**
   ```py
   >>> WTF() is WTF()
   I
@@ -500,7 +500,7 @@ True
   D
   True
   ```
-  As you may observe, the order in which the objects are destroyed is what made all the difference here.
+  이제 보이시나요? 오브젝트 생성/삭제의 순서에서 오는 차이점이었습니다.
 
 ---
 
